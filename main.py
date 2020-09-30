@@ -8,6 +8,12 @@ import private
 
 
 class Trasa:
+    countTras = 0
+    distanceTras = 0
+    upTras = 0
+    downTras = 0
+    maxTras = 0
+
     def __init__(self, name, file, dystans, czas, plus, minus, maks):
         self.name = name
         self.file = file
@@ -16,6 +22,12 @@ class Trasa:
         self.plus = plus
         self.minus = minus
         self.maks = maks
+        Trasa.countTras += 1
+        Trasa.distanceTras += dystans
+        Trasa.upTras += plus
+        Trasa.downTras += minus
+        if maks > Trasa.maxTras:
+            Trasa.maxTras = maks
 
     def readFilePlugin(self):
         gpx_file = open(self.file, 'r')
@@ -49,7 +61,7 @@ class Trasa:
                     points.append(tuple([point.latitude, point.longitude]))
         ave_lat = float(sum(p[0] for p in points) / len(points))
         ave_lon = float(sum(p[1] for p in points) / len(points))
-        #marker = methods.markerCircleLarge(ave_lat, ave_lon, self.description2(), self.description1())
+        # marker = methods.markerCircleLarge(ave_lat, ave_lon, self.description2(), self.description1())
         marker = folium.CircleMarker(location=[ave_lat, ave_lon], color='none', radius=25, fill_color='blue',
                                      popup=self.description2(),
                                      tooltip=self.description1())
@@ -82,7 +94,8 @@ def trasyCamino(mapka):
           2429).addToMap(mapka)
     Trasa('2017-03-05 Heilbronn', 'camino/2017/03-05 Heilbronn.gpx', 2.71, '1:05', 50, 50, 200).addToMap(mapka)
     Trasa('2017-03-14 Heilbronn', 'camino/2017/03-14 Heilbronn.gpx', 4.00, '0:31', 10, 35, 200).addToMap(mapka)
-
+    Trasa('2019-07-03 Supraśl', 'camino/2019/07-03 Suprasl.gpx', 10.01, '2:17', 80, 80, 151).addToMap(mapka)
+    Trasa('2019-07-04 Białowieża', 'camino/2019/07-04 Bialowieza.gpx', 9.24, '2:38', 115, 125, 150).addToMap(mapka)
     Trasa('2019-09-05 Madryt', 'camino/2019/09-05_Madryt.gpx', 0.61, '0:13', 5, 10, 651).addToMap(mapka)
     Trasa('2019-09-07 I etap: Cacabelos-Pradela', 'camino/2019/09-07 I etap - Cacabelos-Pradela.gpx',
           17.76, '4:49', 675, 215, 930).addToMap(mapka)
@@ -230,8 +243,8 @@ def trasyTatry(mapka):
     Trasa('2015-08-08 Slavkovski Stit (wejście)', 'tatry/2015/08-08 Slavkovski Stit.gpx', 4.32, '2:31', 1152, 0,
           2452).addToMap(
         mapka)
-    # Trasa('2015-08-08 Slavkovski Stit (zejście)', 'tatry/08-08 Slavkovski Stit cd.gpx', 4.5, '2:20', 0, 1152, 2452)
-    # .addToMap(mapa)
+    Trasa('2015-08-08 Slavkovski Stit (zejście)', 'tatry/2015/08-08 Slavkovski Stit cd.gpx', 4.5, '2:20', 0, 1152, 2452) \
+        .addToMap(mapa)
     Trasa('2015-08-29 Czerwone Wierchy cz.1', 'tatry/2015/08-29 Czerwone Wierchy.gpx', 6.12, '2:41', 430, 305,
           2122).addToMap(
         mapka)
@@ -291,7 +304,16 @@ trasySudety(mapa)
 trasyBeskidy(mapa)
 trasyTatry(mapa)
 trasySlovakia(mapa)
+print("Liczba tras:", Trasa.countTras)
+print("Dystans:", int(Trasa.distanceTras), "km")
+print("W górę:", Trasa.upTras, "m")
+print("W dół:", Trasa.downTras, "m")
+print("Maks. wysokość:", Trasa.maxTras, "m")
+descSuma = "PODSUMOWANIE\nIlość tras: " + str(Trasa.countTras) + "\nDystans.: " + str(int(Trasa.distanceTras)) + "km\nW górę: " + str(Trasa.upTras) \
+           + "m\nW dół: " + str(Trasa.downTras) + "m\nMaks. wysokość: " + str(Trasa.maxTras) + "m"
+
 markers.caminoMarker(mapa)
 markers.coronaMarker(mapa)
 private.familyMarker(mapa)
-methods.openWebbAndSave(mapa, 'C:/Users/zs/Downloads/Tatry.html')
+methods.markerBell(mapa, 52.22534, 21.02739, descSuma, "RAPORT Z WSZYSTKICH WYPRAW")
+methods.openWebbAndSave(mapa, 'C:/Users/zs/Downloads/Desktop.html')
