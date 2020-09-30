@@ -217,23 +217,6 @@ def trasySudety(mapka):
 
 
 def trasyTatry(mapka):
-    Trasa('2020-07-06 Gęsia Szyja', 'tatry/2020/07-06 Gesia Szyja.gpx', 11.62, '4:14', 525, 560, 1498).addToMap(mapka)
-    Trasa('2020-07-07 Goryczkowa Czuba (zejście z Kasprowego)', 'tatry/2020/07-07 Goryczkowy.gpx', 8.97, '4:06', 190,
-          1160,
-          1913).addToMap(mapka)
-    Trasa('2020-07-07 Świnica (oblodzenie, nie zdobyta)', 'tatry/2020/07-07 Swinica.gpx', 4.39, '2:17', 350, 350,
-          2104).addToMap(
-        mapka)
-    Trasa('2020-07-08 Szpiglasowy Wierch', 'tatry/2020/07-08 Szpiglasowy.gpx', 23.11, '10:02', 1260, 1260,
-          2172).addToMap(
-        mapka)
-    Trasa('2020-07-09 Nosal, Kopieniec', 'tatry/2020/07-09 Nosal.gpx', 11.97, '4:54', 680, 705, 1328).addToMap(mapka)
-    Trasa('2020-07-10 Kościelec', 'tatry/2020/07-10 Koscielec.gpx', 16.71, '8:04', 1525, 1525, 2155).addToMap(mapka)
-    Trasa('2020-07-11 Przysłop Miętusi', 'tatry/2020/07-11 Mietusi.gpx', 6.31, '2:12', 340, 340, 1268).addToMap(mapka)
-    Trasa('2019-07-20 Banikov (wejście)', 'tatry/2019/07-20 Banikov.gpx', 14.03, '8:28', 1495, 1030, 2178).addToMap(
-        mapka)
-    Trasa('2019-07-20 Banikov (zejście)', 'tatry/2019/07-20_Banikov cd.gpx', 2.3, '1:02', 5, 455, 1496).addToMap(mapka)
-    Trasa('2020-08-01 Banikov', 'tatry/2020/08-01 Banikov.gpx', 15.93, '9:51', 1595, 1520, 2178).addToMap(mapka)
     Trasa('2015-08-01 Solisko', 'tatry/2015/08-01 Solisko.gpx', 2.6, '1:27', 270, 270, 2117).addToMap(mapka)
     Trasa('2015-08-02 Krivan (wejście)', 'tatry/2015/08-02 Krivan.gpx', 6.55, '3:06', 1358, 25, 2494).addToMap(mapka)
     Trasa('2015-08-02 Krivan (zejście)', 'tatry/2015/08-02 Krivan cd.gpx', 5.07, '2:26', 0, 1100, 2494).addToMap(mapka)
@@ -255,48 +238,64 @@ def trasyTatry(mapka):
         mapka)
     # Trasa('2015-08-08 Slavkovski Stit (zejście)', 'tatry/08-08 Slavkovski Stit cd.gpx', 4.5, '2:20', 0, 1152, 2452)
     # .addToMap(mapa)
-    Trasa('2018-08-16 Rochacze', 'tatry/2018/08-16 Rochacze.gpx', 13.83, '7:27', 1355, 1050, 2125).addToMap(mapka)
-    Trasa('2016-08-23 Bystra, Błyszcz ', 'tatry/2016/08-23 Bystra.gpx', 21.47, '8:59', 1450, 1450, 2248).addToMap(mapka)
     Trasa('2015-08-29 Czerwone Wierchy cz.1', 'tatry/2015/08-29 Czerwone Wierchy.gpx', 6.12, '2:41', 430, 305,
           2122).addToMap(
         mapka)
     Trasa('2015-08-29 Czerwone Wierchy cz.2', 'tatry/2015/08-29 Czerwone Wierchy cd.gpx', 6.88, '2:37', 25, 1090,
           2122).addToMap(
         mapka)
-    Trasa('2020-09-05 Koprovsky Stit', 'tatry/2020/09-05 Koprovsky Stit.gpx', 20.1, '7:44', 1200, 1200, 2367).addToMap(
+    Trasa('2016-08-23 Bystra, Błyszcz ', 'tatry/2016/08-23 Bystra.gpx', 21.47, '8:59', 1450, 1450, 2248).addToMap(mapka)
+    Trasa('2018-08-16 Rochacze', 'tatry/2018/08-16 Rochacze.gpx', 13.83, '7:27', 1355, 1050, 2125).addToMap(mapka)
+    Trasa('2019-07-20 Banikov (wejście)', 'tatry/2019/07-20 Banikov.gpx', 14.03, '8:28', 1495, 1030, 2178).addToMap(
         mapka)
+    Trasa('2019-07-20 Banikov (zejście)', 'tatry/2019/07-20_Banikov cd.gpx', 2.3, '1:02', 5, 455, 1496).addToMap(mapka)
+
     Trasa('2019-10-05 Trzydniowiański Wierch', 'tatry/2019/10-05 Trzydniowianski.gpx', 20.46, '5:58', 960, 960,
           1758).addToMap(
+        mapka)
+    Trasa('2020-07-06 Gęsia Szyja', 'tatry/2020/07-06 Gesia Szyja.gpx', 11.62, '4:14', 525, 560, 1498).addToMap(mapka)
+    Trasa('2020-07-07 Goryczkowa Czuba (zejście z Kasprowego)', 'tatry/2020/07-07 Goryczkowy.gpx', 8.97, '4:06', 190,
+          1160,
+          1913).addToMap(mapka)
+    Trasa('2020-07-07 Świnica (oblodzenie, nie zdobyta)', 'tatry/2020/07-07 Swinica.gpx', 4.39, '2:17', 350, 350,
+          2104).addToMap(
+        mapka)
+    Trasa('2020-07-08 Szpiglasowy Wierch', 'tatry/2020/07-08 Szpiglasowy.gpx', 23.11, '10:02', 1260, 1260,
+          2172).addToMap(
+        mapka)
+    Trasa('2020-07-09 Nosal, Kopieniec', 'tatry/2020/07-09 Nosal.gpx', 11.97, '4:54', 680, 705, 1328).addToMap(mapka)
+    Trasa('2020-07-10 Kościelec', 'tatry/2020/07-10 Koscielec.gpx', 16.71, '8:04', 1525, 1525, 2155).addToMap(mapka)
+    Trasa('2020-07-11 Przysłop Miętusi', 'tatry/2020/07-11 Mietusi.gpx', 6.31, '2:12', 340, 340, 1268).addToMap(mapka)
+    Trasa('2020-08-01 Banikov', 'tatry/2020/08-01 Banikov.gpx', 15.93, '9:51', 1595, 1520, 2178).addToMap(mapka)
+    Trasa('2020-09-05 Koprovsky Stit', 'tatry/2020/09-05 Koprovsky Stit.gpx', 20.1, '7:44', 1200, 1200, 2367).addToMap(
         mapka)
 
 
 def trasySlovakia(mapka):
-    Trasa('2018-01-25 Velky Choć', 'slovakia/2018/01-25 Velky Choc.gpx', 9.85, '4:31', 965, 965, 1611).addToMap(mapka)
-    Trasa('2017-06-16 Terchova Diery', 'slovakia/2017/06-16 Terchova Diery.gpx', 5.01, '2:00', 285, 285, 750).addToMap(
-        mapka)
-    Trasa('2017-06-18 Stoh', 'slovakia/2017/06-18 Stoh.gpx', 11.43, '5:27', 1225, 1225, 1607).addToMap(mapka)
-    Trasa('2017-07-17 Boboty', 'slovakia/2017/07-17 Boboty.gpx', 4.38, '2:58', 470, 530, 1086).addToMap(mapka)
-    Trasa('2017-07-18 Velky Rozsutec', 'slovakia/2017/07-18 Velky Rozsutec.gpx', 10.15, '6:07', 1210, 1210,
-          1610).addToMap(
-        mapka)
-    Trasa('2017-07-19 Velky Krivan', 'slovakia/2017/07-19 Velky Krivan.gpx', 11.43, '4:15', 490, 1345, 1709).addToMap(
-        mapka)
-    Trasa('2017-07-20 Zbojecky Chodnik', 'slovakia/2017/07-20 Zbojecky Chodnik.gpx', 6.25, '4:02', 745, 745,
-          1007).addToMap(
-        mapka)
     Trasa('2016-08-24 Dumbier', 'slovakia/2016/08-24 Dumbier.gpx', 8.13, '3:04', 510, 510, 2043).addToMap(mapka)
     Trasa('2016-08-25 Velky Choc', 'slovakia/2016/08-25 Velky Choc.gpx', 9.00, '4:56', 1110, 1110, 1611).addToMap(mapka)
     Trasa('2016-11-23 Velky Krivan', 'slovakia/2016/11-23 Velky Krivan.gpx', 10.53, '5:39', 1195, 1195, 1709).addToMap(
         mapka)
     Trasa('2016-12-07 Stoh', 'slovakia/2016/12-07 Stoh.gpx', 10.64, '5:40', 1000, 1000, 1607).addToMap(mapka)
+    Trasa('2017-06-16 Terchova Diery', 'slovakia/2017/06-16 Terchova Diery.gpx', 5.01, '2:00', 285, 285, 750).addToMap(
+        mapka)
+    Trasa('2017-06-18 Stoh', 'slovakia/2017/06-18 Stoh.gpx', 11.43, '5:27', 1225, 1225, 1607).addToMap(mapka)
+    Trasa('2017-07-17 Boboty', 'slovakia/2017/07-17 Boboty.gpx', 4.38, '2:58', 470, 530, 1086).addToMap(mapka)
+    Trasa('2017-07-18 Velky Rozsutec', 'slovakia/2017/07-18 Velky Rozsutec.gpx', 10.15, '6:07', 1210, 1210,
+          1610).addToMap(mapka)
+    Trasa('2017-07-19 Velky Krivan', 'slovakia/2017/07-19 Velky Krivan.gpx', 11.43, '4:15', 490, 1345, 1709).addToMap(
+        mapka)
+    Trasa('2017-07-20 Zbojecky Chodnik', 'slovakia/2017/07-20 Zbojecky Chodnik.gpx', 6.25, '4:02', 745, 745,
+          1007).addToMap(mapka)
+    Trasa('2018-01-25 Velky Choć', 'slovakia/2018/01-25 Velky Choc.gpx', 9.85, '4:31', 965, 965, 1611).addToMap(mapka)
 
 
 mapa = folium.Map(location=[49.2, 20.0], zoom_start=7, control_scale=True)
 
-#trasyCamino(mapa)
-#trasySudety(mapa)
-#trasyBeskidy(mapa)
-#trasyTatry(mapa)
+# trasyCamino(mapa)
+# trasySudety(mapa)
+# trasyBeskidy(mapa)
+trasyTatry(mapa)
 trasySlovakia(mapa)
 markers.caminoMarker(mapa)
 markers.coronaMarker(mapa)
