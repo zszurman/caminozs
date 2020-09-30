@@ -3,6 +3,7 @@ import folium
 import gpxpy.gpx
 from IPython.core.display import display
 from folium import plugins
+import private
 
 
 class Trasa:
@@ -192,7 +193,8 @@ def trasyBeskidy(mapka):
     Trasa('2018-02-08 Radhost', 'beskidy/2018/02-08 Radhost.gpx', 11.72, '4:03', 660, 660, 1129).addToMap(mapka)
     Trasa('2018-02-09 Błatnia', 'beskidy/2018/02-09 Blatnia.gpx', 9.03, '2:56', 530, 530, 917).addToMap(mapka)
     Trasa('2018-03-07 Babia Hora', 'beskidy/2018/03-07 Babia Hora.gpx', 16.13, '6:28', 1090, 1090, 1723).addToMap(mapka)
-    Trasa('2018-03-16 Błękitna EDK', 'beskidy/2018/03-16 Blekitna EDK.gpx', 40.66, '8:41', 440, 440, 270).addToMap(mapka)
+    Trasa('2018-03-16 Błękitna EDK', 'beskidy/2018/03-16 Blekitna EDK.gpx', 40.66, '8:41', 440, 440, 270).addToMap(
+        mapka)
     Trasa('2018-09-29 Radziejowa', 'beskidy/2018/09-29 Radziejowa.gpx', 10.42, '3:27', 505, 505, 1266).addToMap(mapka)
     Trasa('2018-09-30 Lackowa', 'beskidy/2018/09-30 Lackowa.gpx', 7.87, '2:43', 425, 425, 977).addToMap(mapka)
 
@@ -215,7 +217,8 @@ def trasyBeskidy(mapka):
     Trasa('2020-02-08 Błatnia', 'beskidy/2020/02-08 Blatnia.gpx', 13.68, '4:13', 575, 575, 917).addToMap(mapka)
     Trasa('2020-02-15 Kotarz', 'beskidy/2020/02-15 Kotarz.gpx', 13.61, '4:30', 605, 605, 974).addToMap(mapka)
     Trasa('2020-06-13 Kotarz z Zosią', 'beskidy/2020/06-13 Kotarz.gpx', 9.09, '3:58', 215, 540, 974).addToMap(mapka)
-    Trasa('2020-06-27 Wielka Racza', 'beskidy/2020/06-27 Wielka Racza.gpx', 8.35, '3:12', 510, 510, 1236).addToMap(mapka)
+    Trasa('2020-06-27 Wielka Racza', 'beskidy/2020/06-27 Wielka Racza.gpx', 8.35, '3:12', 510, 510, 1236).addToMap(
+        mapka)
     Trasa('2020-08-27 Błatnia z Hanią', 'beskidy/2020/08-27 Blatnia.gpx', 11.50, '4:21', 520, 520, 917).addToMap(mapka)
     Trasa('2020-09-12 Łysa Hora', 'beskidy/2020/09-12 Lysa Hora.gpx', 16.71, '5:13', 865, 865, 1323).addToMap(mapka)
 
@@ -227,7 +230,8 @@ def trasySudety(mapka):
     Trasa('2018-06-01 Śnieżnik', 'sudety/2018/06-01 Snieznik.gpx', 19.68, '5:28', 940, 940, 1426).addToMap(mapka)
     Trasa('2018-06-02 Jagodna', 'sudety/2018/06-02 Jagodna.gpx', 8.67, '2:01', 215, 215, 977).addToMap(mapka)
     Trasa('2018-06-02 Orlica', 'sudety/2018/06-02 Orlica.gpx', 4.30, '1:06', 215, 215, 1084).addToMap(mapka)
-    Trasa('2018-06-24 Biskupia Kopa', 'sudety/2018/06-24 Biskupia Kopa.gpx', 7.59, '2:30', 500, 500, 890).addToMap(mapka)
+    Trasa('2018-06-24 Biskupia Kopa', 'sudety/2018/06-24 Biskupia Kopa.gpx', 7.59, '2:30', 500, 500, 890).addToMap(
+        mapka)
     Trasa('2018-08-01 Śnieżka', 'sudety/2018/08-01 Sniezka.gpx', 5.52, '1:34', 265, 265, 1603).addToMap(mapka)
     Trasa('2018-08-02 Wysoka Kopa', 'sudety/2018/08-02 Wysoka Kopa.gpx', 18.98, '5:45', 510, 775, 1126).addToMap(mapka)
     Trasa('2018-08-03 Kamieńczyk', 'sudety/2018/08-03 Kamienczyk.gpx', 12.71, '3:50', 435, 435, 850).addToMap(mapka)
@@ -244,34 +248,43 @@ def trasySudety(mapka):
     Trasa('2018-09-01 Wielka Sowa', 'sudety/2018/09-01 Wielka Sowa.gpx', 6.52, '1:48', 265, 265, 1015).addToMap(mapka)
     Trasa('2018-09-02 Ślęża', 'sudety/2018/09-02 Sleza.gpx', 8.09, '2:04', 330, 330, 718).addToMap(mapka)
     Trasa('2019-07-05 Łysa Góra', 'sudety/2019/07-05 Lysa Gora.gpx', 8.93, '2:16', 320, 320, 594).addToMap(mapka)
-    Trasa('2019-07-06 Łysica (Święty Krzyż', 'sudety/2019/07-06 Lysica.gpx', 3.77, '1:23', 265, 265, 613).addToMap(mapka)
+    Trasa('2019-07-06 Łysica (Święty Krzyż', 'sudety/2019/07-06 Lysica.gpx', 3.77, '1:23', 265, 265, 613).addToMap(
+        mapka)
 
 
 def trasyTatry(mapka):
     Trasa('2020-07-06 Gęsia Szyja', 'tatry/2020/07-06 Gesia Szyja.gpx', 11.62, '4:14', 525, 560, 1498).addToMap(mapka)
-    Trasa('2020-07-07 Goryczkowa Czuba (zejście z Kasprowego)', 'tatry/2020/07-07 Goryczkowy.gpx', 8.97, '4:06', 190, 1160,
+    Trasa('2020-07-07 Goryczkowa Czuba (zejście z Kasprowego)', 'tatry/2020/07-07 Goryczkowy.gpx', 8.97, '4:06', 190,
+          1160,
           1913).addToMap(mapka)
     Trasa('2020-07-07 Świnica (oblodzenie, nie zdobyta)', 'tatry/2020/07-07 Swinica.gpx', 4.39, '2:17', 350, 350,
           2104).addToMap(
         mapka)
-    Trasa('2020-07-08 Szpiglasowy Wierch', 'tatry/2020/07-08 Szpiglasowy.gpx', 23.11, '10:02', 1260, 1260, 2172).addToMap(
+    Trasa('2020-07-08 Szpiglasowy Wierch', 'tatry/2020/07-08 Szpiglasowy.gpx', 23.11, '10:02', 1260, 1260,
+          2172).addToMap(
         mapka)
     Trasa('2020-07-09 Nosal, Kopieniec', 'tatry/2020/07-09 Nosal.gpx', 11.97, '4:54', 680, 705, 1328).addToMap(mapka)
     Trasa('2020-07-10 Kościelec', 'tatry/2020/07-10 Koscielec.gpx', 16.71, '8:04', 1525, 1525, 2155).addToMap(mapka)
     Trasa('2020-07-11 Przysłop Miętusi', 'tatry/2020/07-11 Mietusi.gpx', 6.31, '2:12', 340, 340, 1268).addToMap(mapka)
-    Trasa('2019-07-20 Banikov (wejście)', 'tatry/2019/07-20 Banikov.gpx', 14.03, '8:28', 1495, 1030, 2178).addToMap(mapka)
+    Trasa('2019-07-20 Banikov (wejście)', 'tatry/2019/07-20 Banikov.gpx', 14.03, '8:28', 1495, 1030, 2178).addToMap(
+        mapka)
     Trasa('2019-07-20 Banikov (zejście)', 'tatry/2019/07-20_Banikov cd.gpx', 2.3, '1:02', 5, 455, 1496).addToMap(mapka)
     Trasa('2020-08-01 Banikov', 'tatry/2020/08-01 Banikov.gpx', 15.93, '9:51', 1595, 1520, 2178).addToMap(mapka)
     Trasa('2015-08-01 Solisko', 'tatry/2015/08-01 Solisko.gpx', 2.6, '1:27', 270, 270, 2117).addToMap(mapka)
     Trasa('2015-08-02 Krivan (wejście)', 'tatry/2015/08-02 Krivan.gpx', 6.55, '3:06', 1358, 25, 2494).addToMap(mapka)
     Trasa('2015-08-02 Krivan (zejście)', 'tatry/2015/08-02 Krivan cd.gpx', 5.07, '2:26', 0, 1100, 2494).addToMap(mapka)
-    Trasa('2015-08-04 Łomnica (pod szczyt)', 'tatry/2015/08-04 Lomnica.gpx', 9.12, '3:11', 675, 10, 1765).addToMap(mapka)
-    Trasa('2015-08-04 Łomnica (zejście)', 'tatry/2015/08-04 Lomnica cd.gpx', 5.35, '1:38', 0, 820, 1765).addToMap(mapka)
-    Trasa('2015-08-05 Sileski Dom cz.1', 'tatry/2015/08-05 Sileski Dom.gpx', 5.95, '1:59', 360, 50, 1690).addToMap(mapka)
-    Trasa('2015-08-05 Sileski Dom cz.2', 'tatry/2015/08-05 Sileski Dom cd.gpx', 4.96, '1:23', 0, 575, 1660).addToMap(mapka)
-    Trasa('2015-08-06 Czerwona Ławka cz.1', 'tatry/2015/08-06 Czerwona Lawka.gpx', 11.01, '3:53', 780, 340, 2352).addToMap(
+    Trasa('2015-08-04 Łomnica (pod szczyt)', 'tatry/2015/08-04 Lomnica.gpx', 9.12, '3:11', 675, 10, 1765).addToMap(
         mapka)
-    Trasa('2015-08-06 Czerwona Ławka cz.2', 'tatry/2015/08-06 Czerwona Lawka cd.gpx', 5.85, '1:25', 0, 625, 1960).addToMap(
+    Trasa('2015-08-04 Łomnica (zejście)', 'tatry/2015/08-04 Lomnica cd.gpx', 5.35, '1:38', 0, 820, 1765).addToMap(mapka)
+    Trasa('2015-08-05 Sileski Dom cz.1', 'tatry/2015/08-05 Sileski Dom.gpx', 5.95, '1:59', 360, 50, 1690).addToMap(
+        mapka)
+    Trasa('2015-08-05 Sileski Dom cz.2', 'tatry/2015/08-05 Sileski Dom cd.gpx', 4.96, '1:23', 0, 575, 1660).addToMap(
+        mapka)
+    Trasa('2015-08-06 Czerwona Ławka cz.1', 'tatry/2015/08-06 Czerwona Lawka.gpx', 11.01, '3:53', 780, 340,
+          2352).addToMap(
+        mapka)
+    Trasa('2015-08-06 Czerwona Ławka cz.2', 'tatry/2015/08-06 Czerwona Lawka cd.gpx', 5.85, '1:25', 0, 625,
+          1960).addToMap(
         mapka)
     Trasa('2015-08-08 Slavkovski Stit (wejście)', 'tatry/2015/08-08 Slavkovski Stit.gpx', 4.32, '2:31', 1152, 0,
           2452).addToMap(
@@ -286,7 +299,8 @@ def trasyTatry(mapka):
     Trasa('2015-08-29 Czerwone Wierchy cz.2', 'tatry/2015/08-29 Czerwone Wierchy cd.gpx', 6.88, '2:37', 25, 1090,
           2122).addToMap(
         mapka)
-    Trasa('2020-09-05 Koprovsky Stit', 'tatry/2020/09-05 Koprovsky Stit.gpx', 20.1, '7:44', 1200, 1200, 2367).addToMap(mapka)
+    Trasa('2020-09-05 Koprovsky Stit', 'tatry/2020/09-05 Koprovsky Stit.gpx', 20.1, '7:44', 1200, 1200, 2367).addToMap(
+        mapka)
     Trasa('2019-10-05 Trzydniowiański Wierch', 'tatry/2019/10-05 Trzydniowianski.gpx', 20.46, '5:58', 960, 960,
           1758).addToMap(
         mapka)
@@ -294,17 +308,22 @@ def trasyTatry(mapka):
 
 def trasySlovakia(mapka):
     Trasa('2018-01-25 Velky Choć', 'slovakia/2018/01-25 Velky Choc.gpx', 9.85, '4:31', 965, 965, 1611).addToMap(mapka)
-    Trasa('2017-06-16 Terchova Diery', 'slovakia/2017/06-16 Terchova Diery.gpx', 5.01, '2:00', 285, 285, 750).addToMap(mapka)
+    Trasa('2017-06-16 Terchova Diery', 'slovakia/2017/06-16 Terchova Diery.gpx', 5.01, '2:00', 285, 285, 750).addToMap(
+        mapka)
     Trasa('2017-06-18 Stoh', 'slovakia/2017/06-18 Stoh.gpx', 11.43, '5:27', 1225, 1225, 1607).addToMap(mapka)
     Trasa('2017-07-17 Boboty', 'slovakia/2017/07-17 Boboty.gpx', 4.38, '2:58', 470, 530, 1086).addToMap(mapka)
-    Trasa('2017-07-18 Velky Rozsutec', 'slovakia/2017/07-18 Velky Rozsutec.gpx', 10.15, '6:07', 1210, 1210, 1610).addToMap(
+    Trasa('2017-07-18 Velky Rozsutec', 'slovakia/2017/07-18 Velky Rozsutec.gpx', 10.15, '6:07', 1210, 1210,
+          1610).addToMap(
         mapka)
-    Trasa('2017-07-19 Velky Krivan', 'slovakia/2017/07-19 Velky Krivan.gpx', 11.43, '4:15', 490, 1345, 1709).addToMap(mapka)
-    Trasa('2017-07-20 Zbojecky Chodnik', 'slovakia/2017/07-20 Zbojecky Chodnik.gpx', 6.25, '4:02', 745, 745, 1007).addToMap(
+    Trasa('2017-07-19 Velky Krivan', 'slovakia/2017/07-19 Velky Krivan.gpx', 11.43, '4:15', 490, 1345, 1709).addToMap(
+        mapka)
+    Trasa('2017-07-20 Zbojecky Chodnik', 'slovakia/2017/07-20 Zbojecky Chodnik.gpx', 6.25, '4:02', 745, 745,
+          1007).addToMap(
         mapka)
     Trasa('2016-08-24 Dumbier', 'slovakia/2016/08-24 Dumbier.gpx', 8.13, '3:04', 510, 510, 2043).addToMap(mapka)
     Trasa('2016-08-25 Velky Choc', 'slovakia/2016/08-25 Velky Choc.gpx', 9.00, '4:56', 1110, 1110, 1611).addToMap(mapka)
-    Trasa('2016-11-23 Velky Krivan', 'slovakia/2016/11-23 Velky Krivan.gpx', 10.53, '5:39', 1195, 1195, 1709).addToMap(mapka)
+    Trasa('2016-11-23 Velky Krivan', 'slovakia/2016/11-23 Velky Krivan.gpx', 10.53, '5:39', 1195, 1195, 1709).addToMap(
+        mapka)
     Trasa('2016-12-07 Stoh', 'slovakia/2016/12-07 Stoh.gpx', 10.64, '5:40', 1000, 1000, 1607).addToMap(mapka)
 
 
@@ -345,42 +364,6 @@ def caminoMarker(mapka):
 
     folium.Marker([46.42119, 11.68189], popup='nocleg w Hotel Dolomiti',
                   tooltip='Vigo di Fassa', icon=folium.Icon(color='pink', icon='bed', prefix='fa')).add_to(mapka)
-
-
-def familyMarker(mapka):
-    folium.Marker([49.986, 18.42051], popup='44-352 Czyżowice, ul. Wodzisławska 10',
-                  tooltip='Agnieszka, Jolanta i Zbigniew Szurman',
-                  icon=folium.Icon(color='pink', icon='info-sign')).add_to(mapka)
-
-    folium.Marker([49.13556, 9.18322], popup='74080 Heilbronn, Heckenstrasse 56',
-                  tooltip='Elena, Hanna, Patrycja i Łukasz Czerwińscy',
-                  icon=folium.Icon(color='pink', icon='info-sign')).add_to(mapka)
-
-    folium.Marker([50.23069, 18.66263], popup='44-195 Knurów, Mieszka I 17B/2',
-                  tooltip='Zofia, Izabela i Błażej Szurman', icon=folium.Icon(color='pink', icon='info-sign')).add_to(
-        mapka)
-
-    folium.Marker([50.30197, 18.64435], popup='44-121 Gliwice, Kozielska 63/3',
-                  tooltip='Florentyna i Krystian Copiak', icon=folium.Icon(color='pink', icon='info-sign')).add_to(
-        mapka)
-
-    folium.Marker([49.82029, 19.05069], popup='44-300 Bielsko-Biała, Bohaterów Warszawy 3A/17',
-                  tooltip='Antonina i Szymon Jaskuła', icon=folium.Icon(color='pink', icon='info-sign')).add_to(mapka)
-
-    folium.Marker([50.74028, 16.64504], popup='58-200 Dzierżoniów, Oś.Błękitne 10G/7',
-                  tooltip='Wiktor Morończyk', icon=folium.Icon(color='pink', icon='info-sign')).add_to(mapka)
-
-    folium.Marker([50.00158, 19.77959], popup='32-060 Liszki, Ściejowice 174',
-                  tooltip='Jan, Maria i Krzysztof Dzierżęga', icon=folium.Icon(color='pink', icon='info-sign')).add_to(
-        mapka)
-
-    folium.Marker([50.03111, 20.21154], popup='32-005 Niepołomice, Daszyńskiego 2A',
-                  tooltip='Julia, Iwona i Adam Morończyk', icon=folium.Icon(color='pink', icon='info-sign')).add_to(
-        mapka)
-
-    folium.Marker([49.88891, 19.10136], popup='43-512 Bestwina Janowice, Łanowa 5',
-                  tooltip='Oliwier, Wojciech, Marzena i Aleksander Morończyk',
-                  icon=folium.Icon(color='pink', icon='info-sign')).add_to(mapka)
 
 
 def coronaMarker(mapka):
@@ -473,11 +456,11 @@ def coronaMarker(mapka):
 mapa = folium.Map(location=[49.2, 20.0], zoom_start=7, control_scale=True)
 
 trasyCamino(mapa)
-trasySudety(mapa)
-trasyBeskidy(mapa)
-trasyTatry(mapa)
-trasySlovakia(mapa)
-caminoMarker(mapa)
-familyMarker(mapa)
+#trasySudety(mapa)
+#trasyBeskidy(mapa)
+#trasyTatry(mapa)
+#trasySlovakia(mapa)
+#caminoMarker(mapa)
+private.familyMarker(mapa)
 coronaMarker(mapa)
-openWebbAndSave(mapa, 'Tatry.html')
+openWebbAndSave(mapa, 'Test.html')
