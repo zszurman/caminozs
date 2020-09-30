@@ -2,7 +2,7 @@ import methods
 
 
 def caminoMarker(mapka):
-    methods.markerInfo(mapka, 42.59967, -6.72743, 'START Camino de Santiago 2019', 'Cacabelos')
+    methods.markerBackward(mapka, 42.59967, -6.72743, 'START Camino de Santiago 2019', 'Cacabelos')
     methods.markerHotel(mapka, 42.66113, -6.86426, 'nocleg w Albergue Lamas', 'Pradela')
     methods.markerHotel(mapka, 42.70786, -7.04602, 'nocleg w Albergue de Cebreiro', 'O Cebreiro')
     methods.markerHotel(mapka, 42.76624, -7.25352, 'nocleg w Albergue Ecologico El Beso', 'Triacastela')
@@ -10,9 +10,9 @@ def caminoMarker(mapka):
     methods.markerHotel(mapka, 42.82525, -7.6961, 'nocleg w Albergue Casa Garcia', 'Gonzar')
     methods.markerHotel(mapka, 42.87883, -7.92873, 'nocleg w Albergue de Mato Casanova', 'Casanova')
     methods.markerHotel(mapka, 42.92624, -8.28054, 'nocleg w Albergue Alborada', 'A Salceda')
-    methods.markerInfo(mapka, 42.88064, -8.54461, 'META Katedra Santiago de Compostela', 'Santiago de Compostela')
-    methods.markerInfo(mapka, 43.10184, -9.21229, 'kąpiel w Atlantyku', 'Muxia')
-    methods.markerInfo(mapka, 42.91551, -9.26384, 'kąpiel w Atlantyku', 'Fisterra')
+    methods.markerBell(mapka, 42.88064, -8.54461, 'META Katedra Santiago de Compostela', 'Santiago de Compostela')
+    methods.markerTint(mapka, 43.10184, -9.21229, 'kąpiel w Atlantyku', 'Muxia')
+    methods.markerTint(mapka, 42.91551, -9.26384, 'kąpiel w Atlantyku', 'Fisterra')
     methods.markerHotel(mapka, 46.42119, 11.68189, 'nocleg w Hotel Dolomiti', 'Vigo di Fassa')
 
 

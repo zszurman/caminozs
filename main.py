@@ -286,12 +286,12 @@ def trasySlovakia(mapka):
 
 mapa = folium.Map(location=[49.2, 20.0], zoom_start=7, control_scale=True)
 
-# trasyCamino(mapa)
-# trasySudety(mapa)
-# trasyBeskidy(mapa)
-#trasyTatry(mapa)
+trasyCamino(mapa)
+trasySudety(mapa)
+trasyBeskidy(mapa)
+trasyTatry(mapa)
 trasySlovakia(mapa)
 markers.caminoMarker(mapa)
 markers.coronaMarker(mapa)
 private.familyMarker(mapa)
-methods.openWebbAndSave(mapa, 'Test.html')
+methods.openWebbAndSave(mapa, 'C:/Users/zs/Downloads/Tatry.html')

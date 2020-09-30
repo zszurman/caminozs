@@ -1,4 +1,5 @@
 import webbrowser
+
 import folium
 import gpxpy.gpx
 from IPython.core.display import display
@@ -30,8 +31,7 @@ def openWebbAndSave(mapka, fileHtml):
 
     minimap = plugins.MiniMap(toggle_display=True)
     mapka.add_child(minimap)
-
-    # plugins.ScrollZoomToggler().add_to(mapa)
+    #plugins.ScrollZoomToggler().add_to(mapka)
     plugins.Fullscreen(position='topright').add_to(mapka)
 
     display(mapka)
@@ -60,5 +60,35 @@ def markerHotel(mapka, lat, lng, popup, tooltip):
 
 
 def markerInfo(mapka, lat, lng, popup, tooltip):
-    folium.Marker(location=[lat, lng], popup=popup, ooltip=tooltip,
+    folium.Marker(location=[lat, lng], popup=popup, tooltip=tooltip,
                   icon=folium.Icon(color='pink', icon='info-sign')).add_to(mapka)
+
+
+def markerHeart(mapka, lat, lng, popup, tooltip):
+    folium.Marker(location=[lat, lng], popup=popup, tooltip=tooltip,
+                  icon=folium.Icon(icon='glyphicon-heart', color='pink', prefix='glyphicon')).add_to(mapka)
+
+
+def markerUser(mapka, lat, lng, popup, tooltip):
+    folium.Marker(location=[lat, lng], popup=popup, tooltip=tooltip,
+                  icon=folium.Icon(icon='glyphicon-user', color='pink', prefix='glyphicon')).add_to(mapka)
+
+
+def markerHome(mapka, lat, lng, popup, tooltip):
+    folium.Marker(location=[lat, lng], popup=popup, tooltip=tooltip,
+                  icon=folium.Icon(icon='glyphicon-home', color='pink', prefix='glyphicon')).add_to(mapka)
+
+
+def markerTint(mapka, lat, lng, popup, tooltip):
+    folium.Marker(location=[lat, lng], popup=popup, tooltip=tooltip,
+                  icon=folium.Icon(icon='glyphicon-tint', color='pink', prefix='glyphicon')).add_to(mapka)
+
+
+def markerBackward(mapka, lat, lng, popup, tooltip):
+    folium.Marker(location=[lat, lng], popup=popup, tooltip=tooltip,
+                  icon=folium.Icon(icon='glyphicon-backward', color='pink', prefix='glyphicon')).add_to(mapka)
+
+
+def markerBell(mapka, lat, lng, popup, tooltip):
+    folium.Marker(location=[lat, lng], popup=popup, tooltip=tooltip,
+                  icon=folium.Icon(icon='glyphicon-bell', color='pink', prefix='glyphicon')).add_to(mapka)
