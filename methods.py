@@ -42,7 +42,7 @@ def openWebbAndSave(mapka, fileHtml):
     webbrowser.open(html_page, new=new)
 
 
-def markerCircleSmall(mapka,lat, lng, popup, tooltip):
+def markerCircleSmall(mapka, lat, lng, popup, tooltip):
     folium.CircleMarker(location=[lat, lng], color='yellow', radius=7, fill_color='yellow',
                         popup=popup,
                         tooltip=tooltip).add_to(mapka)
@@ -54,10 +54,11 @@ def markerCircleLarge(mapka, lat, lng, popup, tooltip):
                         tooltip=tooltip).add_to(mapka)
 
 
-def markerHotel(mapka,lat, lng, popup, tooltip):
-    folium.Marker(location=[lat ,lng], popup=popup,
+def markerHotel(mapka, lat, lng, popup, tooltip):
+    folium.Marker(location=[lat, lng], popup=popup,
                   tooltip=tooltip, icon=folium.Icon(color='pink', icon='bed', prefix='fa')).add_to(mapka)
 
 
-def markerInfo(mapka,lat, lng, popup, tooltip):
-    folium.Marker(location=[lat, lng], popup=popup,ooltip=tooltip, icon=folium.Icon(color='pink', icon='info-sign')).add_to(mapka)
+def markerInfo(mapka, lat, lng, popup, tooltip):
+    folium.Marker(location=[lat, lng], popup=popup, ooltip=tooltip,
+                  icon=folium.Icon(color='pink', icon='info-sign')).add_to(mapka)
