@@ -49,6 +49,7 @@ class Trasa:
                     points.append(tuple([point.latitude, point.longitude]))
         ave_lat = float(sum(p[0] for p in points) / len(points))
         ave_lon = float(sum(p[1] for p in points) / len(points))
+        #marker = methods.markerCircleLarge(ave_lat, ave_lon, self.description2(), self.description1())
         marker = folium.CircleMarker(location=[ave_lat, ave_lon], color='none', radius=25, fill_color='blue',
                                      popup=self.description2(),
                                      tooltip=self.description1())
@@ -121,7 +122,6 @@ def trasyBeskidy(mapka):
     Trasa('2016-11-30 Pilsko', 'beskidy/2016/11-30 Pilsko.gpx', 11.91, '6:27', 770, 770, 1557).addToMap(mapka)
     Trasa('2016-12-15 Łysa Hora', 'beskidy/2016/12-15 Lysa Hora.gpx', 12.15, '4:28', 890, 890, 1323).addToMap(mapka)
     Trasa('2016-12-27 Łysa Hora', 'beskidy/2016/12-27 Lysa Hora.gpx', 10.26, '4:40', 820, 820, 1323).addToMap(mapka)
-    # 2017
     Trasa('2017-01-11 Rysianka schronisko', 'beskidy/2017/01-11 Rysianka.gpx', 15.58, '4:56', 730, 730, 1260).addToMap(
         mapka)
     Trasa('2017-01-19 Rysianka schronisko', 'beskidy/2017/01-19 Rysianka.gpx', 18.22, '6:50', 755, 755, 1260).addToMap(
@@ -148,8 +148,6 @@ def trasyBeskidy(mapka):
     Trasa('2017-10-01 Klimczok schronisko', 'beskidy/2017/10-01 Klimczok.gpx', 9.57, '2:58', 555, 555, 1042).addToMap(
         mapka)
     Trasa('2017-11-23 Czantoria', 'beskidy/2017/11-23 Czantoria.gpx', 9.59, '3:23', 735, 530, 995).addToMap(mapka)
-
-    # 2018
     Trasa('2018-01-12 Babia Góra', 'beskidy/2018/01-12 Babia Gora.gpx', 14.03, '4:58', 745, 745, 1723).addToMap(mapka)
     Trasa('2018-01-29 Barania Góra', 'beskidy/2018/01-29 Barania Gora.gpx', 17.29, '6:07', 875, 875, 1220).addToMap(
         mapka)
@@ -161,8 +159,6 @@ def trasyBeskidy(mapka):
         mapka)
     Trasa('2018-09-29 Radziejowa', 'beskidy/2018/09-29 Radziejowa.gpx', 10.42, '3:27', 505, 505, 1266).addToMap(mapka)
     Trasa('2018-09-30 Lackowa', 'beskidy/2018/09-30 Lackowa.gpx', 7.87, '2:43', 425, 425, 977).addToMap(mapka)
-
-    # 2019
     Trasa('2019-02-16 Łysa Hora', 'beskidy/2019/02-16 Lysa Hora.gpx', 11.19, '3:55', 760, 760, 1323).addToMap(mapka)
     Trasa('2019-02-19 Hrobacza Łąka', 'beskidy/2019/02-19 Hrobacza Laka.gpx', 7.08, '2:34', 390, 390, 828).addToMap(
         mapka)
@@ -174,8 +170,6 @@ def trasyBeskidy(mapka):
     Trasa('2019-10-19 Łysa Hora', 'beskidy/2019/10-19 Lysa Hora.gpx', 12.70, '4:12', 835, 835, 1323).addToMap(mapka)
     Trasa('2019-12-05 Klimczok schronisko', 'beskidy/2019/12-05 Klimczok.gpx', 5.57, '3:37', 550, 5, 1042).addToMap(
         mapka)
-
-    # 2020
     Trasa('2020-01-14 Radhost', 'beskidy/2020/01-14 Radhost.gpx', 14.38, '4:49', 740, 740, 1129).addToMap(mapka)
     Trasa('2020-01-25 Stołów', 'beskidy/2020/01-25 Stolow.gpx', 13.65, '4:47', 660, 660, 1035).addToMap(mapka)
     Trasa('2020-02-08 Błatnia', 'beskidy/2020/02-08 Blatnia.gpx', 13.68, '4:13', 575, 575, 917).addToMap(mapka)
@@ -295,8 +289,8 @@ mapa = folium.Map(location=[49.2, 20.0], zoom_start=7, control_scale=True)
 # trasyCamino(mapa)
 # trasySudety(mapa)
 # trasyBeskidy(mapa)
-trasyTatry(mapa)
-trasySlovakia(mapa)
+#trasyTatry(mapa)
+#trasySlovakia(mapa)
 markers.caminoMarker(mapa)
 markers.coronaMarker(mapa)
 private.familyMarker(mapa)
