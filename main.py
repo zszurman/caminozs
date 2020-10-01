@@ -314,10 +314,10 @@ trasySlovakia(mapa)
 timeD = methods.timeDay(Trasa.hourTras, Trasa.minTras)
 descSuma = "PODSUMOWANIE\nIlość tras:" + str(Trasa.countTras) + "\nDystans:"\
            + str(int(Trasa.distanceTras)) + "km\n" + timeD + "\nWzniosy:" + str(Trasa.upTras) \
-           + "m\nSpady:" + str(Trasa.downTras) + "m\nNajwyżej:" + str(Trasa.maxTras) + "m"
+           + "m\nSpadki:" + str(Trasa.downTras) + "m\nNajwyżej:" + str(Trasa.maxTras) + "m"
 print(descSuma)
 markers.caminoMarker(mapa)
 markers.coronaMarker(mapa)
 private.familyMarker(mapa)
 methods.markerBell(mapa, 52.22534, 21.02739, descSuma, "RAPORT Z WSZYSTKICH WYPRAW")
-methods.openWebbAndSave(mapa, 'C:/Users/zs/Downloads/Dupa.html')
+methods.openWebbAndSave(mapa, 'C:/Users/zs/Downloads/Wszystko.html')

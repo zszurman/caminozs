@@ -4,20 +4,24 @@ import folium
 import gpxpy.gpx
 from IPython.core.display import display
 from folium import plugins
+import klasa
 
 
 def timeDay(hour, minut):
+    allMinut = hour * 60 + minut
+    xDay = allMinut // (60 * 24)
+    restMinut = allMinut % (60 * 24)
+    xHour = restMinut // 60
+    xMinut = restMinut % 60
+    return 'Dni:' + str(xDay) + '\nGodzin:' + str(xHour) + '\nMinut:' + str(xMinut)
 
-    day = hour // 24
-    godzZminut = minut // 60
-    if godzZminut > 23:
-        day += godzZminut // 24
-        godzZminut %= 24
-    godz = hour % 24 + godzZminut
 
-    minutPozostalo = minut % 60
-
-    return 'Dni:' + str(day) + '\nGodzin:' + str(godz) + '\nMinut:' + str(minutPozostalo)
+def descriptionRaport():
+    timeD = timeDay(klasa.Trasa.hourTras, klasa.Trasa.minTras)
+    descSuma = "PODSUMOWANIE TATRY\nIlość tras:" + str(klasa.Trasa.countTras) + "\nDystans:" \
+               + str(int(klasa.Trasa.distanceTras)) + "km\n" + timeD + "\nWzniosy:" + str(klasa.Trasa.upTras) \
+               + "m\nSpadki:" + str(klasa.Trasa.downTras) + "m\nNajwyżej:" + str(klasa.Trasa.maxTras) + "m"
+    return descSuma
 
 
 def showGpxReturnMap(fileGpx):
@@ -105,4 +109,4 @@ def markerBackward(mapka, lat, lng, popup, tooltip):
 
 def markerBell(mapka, lat, lng, popup, tooltip):
     folium.Marker(location=[lat, lng], popup=popup, tooltip=tooltip,
-                  icon=folium.Icon(icon='glyphicon-bell', color='pink', prefix='glyphicon')).add_to(mapka)
+                  icon=folium.Icon(icon='glyphicon-bell', color='black', prefix='glyphicon')).add_to(mapka)
