@@ -6,6 +6,20 @@ from IPython.core.display import display
 from folium import plugins
 
 
+def timeDay(hour, minut):
+
+    day = hour // 24
+    godzZminut = minut // 60
+    if godzZminut > 23:
+        day += godzZminut // 24
+        godzZminut %= 24
+    godz = hour % 24 + godzZminut
+
+    minutPozostalo = minut % 60
+
+    return 'Dni:' + str(day) + '\nGodzin:' + str(godz) + '\nMinut:' + str(minutPozostalo)
+
+
 def showGpxReturnMap(fileGpx):
     gpx_file = open(fileGpx, 'r')
     gpx = gpxpy.parse(gpx_file)
@@ -31,7 +45,7 @@ def openWebbAndSave(mapka, fileHtml):
 
     minimap = plugins.MiniMap(toggle_display=True)
     mapka.add_child(minimap)
-    #plugins.ScrollZoomToggler().add_to(mapka)
+    # plugins.ScrollZoomToggler().add_to(mapka)
     plugins.Fullscreen(position='topright').add_to(mapka)
 
     display(mapka)

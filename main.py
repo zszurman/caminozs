@@ -13,6 +13,8 @@ class Trasa:
     upTras = 0
     downTras = 0
     maxTras = 0
+    hourTras = 0
+    minTras = 0
 
     def __init__(self, name, file, dystans, czas, plus, minus, maks):
         self.name = name
@@ -28,6 +30,11 @@ class Trasa:
         Trasa.downTras += minus
         if maks > Trasa.maxTras:
             Trasa.maxTras = maks
+        if len(czas) ==4:
+            Trasa.hourTras += int(czas[0])
+        else:
+            Trasa.hourTras += int(czas[0] + czas[1])
+        Trasa.minTras += int(czas[-2] + czas[-1])
 
     def readFilePlugin(self):
         gpx_file = open(self.file, 'r')
@@ -304,16 +311,13 @@ trasySudety(mapa)
 trasyBeskidy(mapa)
 trasyTatry(mapa)
 trasySlovakia(mapa)
-print("Liczba tras:", Trasa.countTras)
-print("Dystans:", int(Trasa.distanceTras), "km")
-print("W górę:", Trasa.upTras, "m")
-print("W dół:", Trasa.downTras, "m")
-print("Maks. wysokość:", Trasa.maxTras, "m")
-descSuma = "PODSUMOWANIE\nIlość tras: " + str(Trasa.countTras) + "\nDystans.: " + str(int(Trasa.distanceTras)) + "km\nW górę: " + str(Trasa.upTras) \
-           + "m\nW dół: " + str(Trasa.downTras) + "m\nMaks. wysokość: " + str(Trasa.maxTras) + "m"
-
+timeD = methods.timeDay(Trasa.hourTras, Trasa.minTras)
+descSuma = "PODSUMOWANIE\nIlość tras:" + str(Trasa.countTras) + "\nDystans:"\
+           + str(int(Trasa.distanceTras)) + "km\n" + timeD + "\nWzniosy:" + str(Trasa.upTras) \
+           + "m\nSpady:" + str(Trasa.downTras) + "m\nNajwyżej:" + str(Trasa.maxTras) + "m"
+print(descSuma)
 markers.caminoMarker(mapa)
 markers.coronaMarker(mapa)
 private.familyMarker(mapa)
 methods.markerBell(mapa, 52.22534, 21.02739, descSuma, "RAPORT Z WSZYSTKICH WYPRAW")
-methods.openWebbAndSave(mapa, 'C:/Users/zs/Downloads/Desktop.html')
+methods.openWebbAndSave(mapa, 'C:/Users/zs/Downloads/Dupa.html')
