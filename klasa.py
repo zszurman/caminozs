@@ -12,6 +12,54 @@ class Trasa:
     hourTras = 0
     minTras = 0
 
+    countTras2015 = 0
+    distanceTras2015 = 0
+    upTras2015 = 0
+    downTras2015 = 0
+    maxTras2015 = 0
+    hourTras2015 = 0
+    minTras2015 = 0
+
+    countTras2016 = 0
+    distanceTras2016 = 0
+    upTras2016 = 0
+    downTras2016 = 0
+    maxTras2016 = 0
+    hourTras2016 = 0
+    minTras2016 = 0
+
+    countTras2017 = 0
+    distanceTras2017 = 0
+    upTras2017 = 0
+    downTras2017 = 0
+    maxTras2017 = 0
+    hourTras2017 = 0
+    minTras2017 = 0
+
+    countTras2018 = 0
+    distanceTras2018 = 0
+    upTras2018 = 0
+    downTras2018 = 0
+    maxTras2018 = 0
+    hourTras2018 = 0
+    minTras2018 = 0
+
+    countTras2019 = 0
+    distanceTras2019 = 0
+    upTras2019 = 0
+    downTras2019 = 0
+    maxTras2019 = 0
+    hourTras2019 = 0
+    minTras2019 = 0
+
+    countTras2020 = 0
+    distanceTras2020 = 0
+    upTras2020 = 0
+    downTras2020 = 0
+    maxTras2020 = 0
+    hourTras2020 = 0
+    minTras2020 = 0
+
     def __init__(self, name, file, dystans, czas, plus, minus, maks):
         self.name = name
         self.file = file
@@ -31,6 +79,84 @@ class Trasa:
         else:
             Trasa.hourTras += int(czas[0] + czas[1])
         Trasa.minTras += int(czas[-2] + czas[-1])
+
+        if '2015' in name:
+            Trasa.countTras2015 += 1
+            Trasa.distanceTras2015 += dystans
+            Trasa.upTras2015 += plus
+            Trasa.downTras2015 += minus
+            if maks > Trasa.maxTras2015:
+                Trasa.maxTras2015 = maks
+            if len(czas) == 4:
+                Trasa.hourTras2015 += int(czas[0])
+            else:
+                Trasa.hourTras2015 += int(czas[0] + czas[1])
+            Trasa.minTras2015 += int(czas[-2] + czas[-1])
+
+        if '2016' in name:
+            Trasa.countTras2016 += 1
+            Trasa.distanceTras2016 += dystans
+            Trasa.upTras2016 += plus
+            Trasa.downTras2016 += minus
+            if maks > Trasa.maxTras2016:
+                Trasa.maxTras2016 = maks
+            if len(czas) == 4:
+                Trasa.hourTras2016 += int(czas[0])
+            else:
+                Trasa.hourTras2016 += int(czas[0] + czas[1])
+            Trasa.minTras2016 += int(czas[-2] + czas[-1])
+
+        if '2017' in name:
+            Trasa.countTras2017 += 1
+            Trasa.distanceTras2017 += dystans
+            Trasa.upTras2017 += plus
+            Trasa.downTras2017 += minus
+            if maks > Trasa.maxTras2017:
+                Trasa.maxTras2017 = maks
+            if len(czas) == 4:
+                Trasa.hourTras2017 += int(czas[0])
+            else:
+                Trasa.hourTras2017 += int(czas[0] + czas[1])
+            Trasa.minTras2017 += int(czas[-2] + czas[-1])
+
+        if '2018' in name:
+            Trasa.countTras2018 += 1
+            Trasa.distanceTras2018 += dystans
+            Trasa.upTras2018 += plus
+            Trasa.downTras2018 += minus
+            if maks > Trasa.maxTras2018:
+                Trasa.maxTras2018 = maks
+            if len(czas) == 4:
+                Trasa.hourTras2018 += int(czas[0])
+            else:
+                Trasa.hourTras2018 += int(czas[0] + czas[1])
+            Trasa.minTras2018 += int(czas[-2] + czas[-1])
+
+        if '2019' in name:
+            Trasa.countTras2019 += 1
+            Trasa.distanceTras2019 += dystans
+            Trasa.upTras2019 += plus
+            Trasa.downTras2019 += minus
+            if maks > Trasa.maxTras2019:
+                Trasa.maxTras2019 = maks
+            if len(czas) == 4:
+                Trasa.hourTras2019 += int(czas[0])
+            else:
+                Trasa.hourTras2019 += int(czas[0] + czas[1])
+            Trasa.minTras2019 += int(czas[-2] + czas[-1])
+
+        if '2020' in name:
+            Trasa.countTras2020 += 1
+            Trasa.distanceTras2020 += dystans
+            Trasa.upTras2020 += plus
+            Trasa.downTras2020 += minus
+            if maks > Trasa.maxTras2020:
+                Trasa.maxTras2020 = maks
+            if len(czas) == 4:
+                Trasa.hourTras2020 += int(czas[0])
+            else:
+                Trasa.hourTras2020 += int(czas[0] + czas[1])
+            Trasa.minTras2020 += int(czas[-2] + czas[-1])
 
     def readFilePlugin(self):
         gpx_file = open(self.file, 'r')
@@ -64,19 +190,22 @@ class Trasa:
                     points.append(tuple([point.latitude, point.longitude]))
         ave_lat = float(sum(p[0] for p in points) / len(points))
         ave_lon = float(sum(p[1] for p in points) / len(points))
-        # marker = methods.markerCircleLarge(ave_lat, ave_lon, self.description2(), self.description1())
         marker = folium.CircleMarker(location=[ave_lat, ave_lon], color='none', radius=25, fill_color='blue',
-                                     popup=self.description2(),
-                                     tooltip=self.description1())
+                                     popup=self.popup(),
+                                     tooltip=self.tooltip())
         return marker
 
-    def description1(self):
-        return self.name + ", maks.wys. " + str(self.maks) + " mnpm"
+    def tooltip(self):
+        return self.name
 
-    def description2(self):
-        return "trasa=" + str(self.dystans) + "km\nczas=" + self.czas + "h\nwzniosy=" + str(self.plus) \
-               + "m\nspadki=" + str(self.minus) + "m"
+    def popup(self):
+        return "Dystans:" + str(self.dystans) + "km\nCzas:" + self.czas + "h\nWzniosy:" + str(self.plus) \
+               + "m\nSpadki:" + str(self.minus) + "m\nNajwyżej:" + str(self.maks)
 
     def addToMap(self, mapka):
         self.readFileMarker().add_to(mapka)
         self.readFilePoly().add_to(mapka)
+
+    def addToMapPlugin(self, mapka):
+        self.readFilePlugin().add_to(mapka)
+        self.readFileMarker().add_to(mapka)

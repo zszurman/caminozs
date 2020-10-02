@@ -13,15 +13,72 @@ def timeDay(hour, minut):
     restMinut = allMinut % (60 * 24)
     xHour = restMinut // 60
     xMinut = restMinut % 60
-    return 'Dni:' + str(xDay) + '\nGodzin:' + str(xHour) + '\nMinut:' + str(xMinut)
+    return 'Czas:' + str(xDay) + 'd:' + str(xHour) + 'h:' + str(xMinut) + 'min'
 
 
-def descriptionRaport():
+def popupRaport():
     timeD = timeDay(klasa.Trasa.hourTras, klasa.Trasa.minTras)
-    descSuma = "PODSUMOWANIE TATRY\nIlość tras:" + str(klasa.Trasa.countTras) + "\nDystans:" \
+    descSuma = "Ilość tras:" + str(klasa.Trasa.countTras) + "\nDystans:" \
                + str(int(klasa.Trasa.distanceTras)) + "km\n" + timeD + "\nWzniosy:" + str(klasa.Trasa.upTras) \
                + "m\nSpadki:" + str(klasa.Trasa.downTras) + "m\nNajwyżej:" + str(klasa.Trasa.maxTras) + "m"
     return descSuma
+
+
+def popup2015():
+    timeD = timeDay(klasa.Trasa.hourTras2015, klasa.Trasa.minTras2015)
+    descSuma = "Ilość tras:" + str(klasa.Trasa.countTras2015) + "\nDystans:" \
+               + str(int(klasa.Trasa.distanceTras2015)) + "km\n" + timeD + "\nWzniosy:" + str(klasa.Trasa.upTras2015) \
+               + "m\nSpadki:" + str(klasa.Trasa.downTras2015) + "m\nNajwyżej:" + str(klasa.Trasa.maxTras2015) + "m"
+    return descSuma
+
+
+def popup2016():
+    timeD = timeDay(klasa.Trasa.hourTras2016, klasa.Trasa.minTras2016)
+    descSuma = "Ilość tras:" + str(klasa.Trasa.countTras2016) + "\nDystans:" \
+               + str(int(klasa.Trasa.distanceTras2016)) + "km\n" + timeD + "\nWzniosy:" + str(klasa.Trasa.upTras2016) \
+               + "m\nSpadki:" + str(klasa.Trasa.downTras2016) + "m\nNajwyżej:" + str(klasa.Trasa.maxTras2016) + "m"
+    return descSuma
+
+
+def popup2017():
+    timeD = timeDay(klasa.Trasa.hourTras2017, klasa.Trasa.minTras2017)
+    descSuma = "Ilość tras:" + str(klasa.Trasa.countTras2017) + "\nDystans:" \
+               + str(int(klasa.Trasa.distanceTras2017)) + "km\n" + timeD + "\nWzniosy:" + str(klasa.Trasa.upTras2017) \
+               + "m\nSpadki:" + str(klasa.Trasa.downTras2017) + "m\nNajwyżej:" + str(klasa.Trasa.maxTras2017) + "m"
+    return descSuma
+
+
+def popup2018():
+    timeD = timeDay(klasa.Trasa.hourTras2018, klasa.Trasa.minTras2018)
+    descSuma = "Ilość tras:" + str(klasa.Trasa.countTras2018) + "\nDystans:" \
+               + str(int(klasa.Trasa.distanceTras2018)) + "km\n" + timeD + "\nWzniosy:" + str(klasa.Trasa.upTras2018) \
+               + "m\nSpadki:" + str(klasa.Trasa.downTras2018) + "m\nNajwyżej:" + str(klasa.Trasa.maxTras2018) + "m"
+    return descSuma
+
+
+def popup2019():
+    timeD = timeDay(klasa.Trasa.hourTras2019, klasa.Trasa.minTras2019)
+    descSuma = "Ilość tras:" + str(klasa.Trasa.countTras2019) + "\nDystans:" \
+               + str(int(klasa.Trasa.distanceTras2019)) + "km\n" + timeD + "\nWzniosy:" + str(klasa.Trasa.upTras2019) \
+               + "m\nSpadki:" + str(klasa.Trasa.downTras2019) + "m\nNajwyżej:" + str(klasa.Trasa.maxTras2019) + "m"
+    return descSuma
+
+
+def popup2020():
+    timeD = timeDay(klasa.Trasa.hourTras2020, klasa.Trasa.minTras2020)
+    descSuma = "Ilość tras:" + str(klasa.Trasa.countTras2020) + "\nDystans:" \
+               + str(int(klasa.Trasa.distanceTras2020)) + "km\n" + timeD + "\nWzniosy:" + str(klasa.Trasa.upTras2020) \
+               + "m\nSpadki:" + str(klasa.Trasa.downTras2020) + "m\nNajwyżej:" + str(klasa.Trasa.maxTras2020) + "m"
+    return descSuma
+
+
+def popup2015do2020(mapka, lat, lng):
+    markerRaport(mapka, lat, lng + 0.12, popup2015(), 'ROK 2015')
+    markerRaport(mapka, lat, lng + 0.10, popup2016(), 'ROK 2016')
+    markerRaport(mapka, lat, lng + 0.08, popup2017(), 'ROK 2017')
+    markerRaport(mapka, lat, lng + 0.06, popup2018(), 'ROK 2018')
+    markerRaport(mapka, lat, lng + 0.04, popup2019(), 'ROK 2019')
+    markerRaport(mapka, lat, lng + 0.02, popup2020(), 'ROK 2020')
 
 
 def showGpxReturnMap(fileGpx):
@@ -74,7 +131,7 @@ def markerCircleLarge(mapka, lat, lng, popup, tooltip):
 
 def markerHotel(mapka, lat, lng, popup, tooltip):
     folium.Marker(location=[lat, lng], popup=popup,
-                  tooltip=tooltip, icon=folium.Icon(color='pink', icon='bed', prefix='fa')).add_to(mapka)
+                  tooltip=tooltip, icon=folium.Icon(color='blue', icon='bed', prefix='fa')).add_to(mapka)
 
 
 def markerInfo(mapka, lat, lng, popup, tooltip):
@@ -99,14 +156,19 @@ def markerHome(mapka, lat, lng, popup, tooltip):
 
 def markerTint(mapka, lat, lng, popup, tooltip):
     folium.Marker(location=[lat, lng], popup=popup, tooltip=tooltip,
-                  icon=folium.Icon(icon='glyphicon-tint', color='pink', prefix='glyphicon')).add_to(mapka)
+                  icon=folium.Icon(icon='glyphicon-tint', color='darkblue', prefix='glyphicon')).add_to(mapka)
 
 
 def markerBackward(mapka, lat, lng, popup, tooltip):
     folium.Marker(location=[lat, lng], popup=popup, tooltip=tooltip,
-                  icon=folium.Icon(icon='glyphicon-backward', color='pink', prefix='glyphicon')).add_to(mapka)
+                  icon=folium.Icon(icon='glyphicon-backward', color='darkblue', prefix='glyphicon')).add_to(mapka)
 
 
 def markerBell(mapka, lat, lng, popup, tooltip):
     folium.Marker(location=[lat, lng], popup=popup, tooltip=tooltip,
-                  icon=folium.Icon(icon='glyphicon-bell', color='black', prefix='glyphicon')).add_to(mapka)
+                  icon=folium.Icon(icon='glyphicon-bell', color='darkblue', prefix='glyphicon')).add_to(mapka)
+
+
+def markerRaport(mapka, lat, lng, popup, tooltip):
+    folium.Marker(location=[lat, lng], popup=popup, tooltip=tooltip,
+                  icon=folium.Icon(icon='glyphicon-list-alt', color='cadetblue', prefix='glyphicon')).add_to(mapka)
