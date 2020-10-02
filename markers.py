@@ -26,6 +26,7 @@ def coronaMarker(mapka):
     methods.markerCircleSmall(mapka, 49.54288, 20.11128, 'Gorce', 'Turbacz 1310 mnpm')
     methods.markerCircleSmall(mapka, 49.44935, 20.60433, 'Beskid Sądecki', 'Radziejowa 1266 mnpm')
     methods.markerCircleSmall(mapka, 49.68442, 19.03026, 'Beskid Śląski', 'Skrzyczne 1257 mnpm')
+    methods.markerCircleSmall(mapka, 49.65523, 20.27683, 'Beskid Wyspowy', 'Mogielica 1171 mnpm')
     methods.markerCircleSmall(mapka, 49.3804, 20.5554, 'Pieniny', 'Wysoka 1050 mnpm')
     methods.markerCircleSmall(mapka, 49.42663, 21.10289, 'Beskid Niski', 'Lackowa 997 mnpm')
     methods.markerCircleSmall(mapka, 49.76796, 19.16112, 'Beskid Mały', 'Czupel 933 mnpm')

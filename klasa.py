@@ -209,3 +209,5 @@ class Trasa:
     def addToMapPlugin(self, mapka):
         self.readFilePlugin().add_to(mapka)
         self.readFileMarker().add_to(mapka)
+
+

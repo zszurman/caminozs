@@ -7,6 +7,64 @@ from folium import plugins
 import klasa
 
 
+def refreshKlasa():
+    klasa.countTras = 0
+    klasa.distanceTras = 0
+    klasa.upTras = 0
+    klasa.downTras = 0
+    klasa.maxTras = 0
+    klasa.hourTras = 0
+    klasa.minTras = 0
+
+    klasa.countTras2015 = 0
+    klasa.distanceTras2015 = 0
+    klasa.upTras2015 = 0
+    klasa.downTras2015 = 0
+    klasa.maxTras2015 = 0
+    klasa.hourTras2015 = 0
+    klasa.minTras2015 = 0
+
+    klasa.countTras2016 = 0
+    klasa.distanceTras2016 = 0
+    klasa.upTras2016 = 0
+    klasa.downTras2016 = 0
+    klasa.maxTras2016 = 0
+    klasa.hourTras2016 = 0
+    klasa.minTras2016 = 0
+
+    klasa.countTras2017 = 0
+    klasa.distanceTras2017 = 0
+    klasa.upTras2017 = 0
+    klasa.downTras2017 = 0
+    klasa.maxTras2017 = 0
+    klasa.hourTras2017 = 0
+    klasa.minTras2017 = 0
+
+    klasa.countTras2018 = 0
+    klasa.distanceTras2018 = 0
+    klasa.upTras2018 = 0
+    klasa.downTras2018 = 0
+    klasa.maxTras2018 = 0
+    klasa.hourTras2018 = 0
+    klasa.minTras2018 = 0
+
+    klasa.countTras2019 = 0
+    klasa.distanceTras2019 = 0
+    klasa.upTras2019 = 0
+    klasa.downTras2019 = 0
+    klasa.maxTras2019 = 0
+    klasa.hourTras2019 = 0
+    klasa.minTras2019 = 0
+
+    klasa.countTras2020 = 0
+    klasa.distanceTras2020 = 0
+    klasa.upTras2020 = 0
+    klasa.downTras2020 = 0
+    klasa.maxTras2020 = 0
+    klasa.hourTras2020 = 0
+    klasa.minTras2020 = 0
+
+
 def timeDay(hour, minut):
     allMinut = hour * 60 + minut
     xDay = allMinut // (60 * 24)

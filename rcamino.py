@@ -1,8 +1,8 @@
 from folium import folium
 
+import markers
 import methods
 import trasyPlugin
-import markers
 
 mapka = folium.Map(location=[42.77, -7.41], zoom_start=8, control_scale=True)
 trasyPlugin.trasyCamino2019(mapka)

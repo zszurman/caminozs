@@ -3,6 +3,7 @@ from folium import folium
 import methods
 import trasy
 
+
 lat = 48.90
 lng = 19.3
 

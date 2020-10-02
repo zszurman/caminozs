@@ -1,13 +1,16 @@
 from folium import folium
 
+import markers
 import methods
 import trasy
-import markers
+
 
 lat = 49.3
 lng = 19.94
 
 mapka = folium.Map(location=[lat, lng], zoom_start=10, control_scale=True)
+
+
 trasy.trasyTatry2015(mapka)
 trasy.trasyTatry2016(mapka)
 trasy.trasyTatry2018(mapka)
