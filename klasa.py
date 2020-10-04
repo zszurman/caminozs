@@ -166,7 +166,22 @@ class Trasa:
             for segment in track.segments:
                 for point in segment.points:
                     points.append(tuple([point.latitude, point.longitude]))
-        p = plugins.AntPath(points)
+
+        if self.countTras == 0 or self.countTras % 7 == 0:
+            p = plugins.AntPath(points, color="blue")
+        elif self.countTras == 1 or self.countTras % 6 == 0:
+            p = plugins.AntPath(points, color="darkred")
+        elif self.countTras % 5 == 0:
+            p = plugins.AntPath(points, color="purple")
+        elif self.countTras % 4 == 0:
+            p = plugins.AntPath(points, color="orange")
+        elif self.countTras % 3 == 0:
+            p = plugins.AntPath(points, color="darkblue")
+        elif self.countTras % 2 == 0:
+            p = plugins.AntPath(points, color="green")
+        else:
+            p = plugins.AntPath(points, color="black")
+
         return p
 
     def readFilePoly(self):
@@ -177,7 +192,21 @@ class Trasa:
             for segment in track.segments:
                 for point in segment.points:
                     points.append(tuple([point.latitude, point.longitude]))
-        polyLine = folium.PolyLine(points, color="blue", weight=3.5, opacity=1)
+        if self.countTras == 0 or self.countTras % 7 == 0:
+            polyLine = folium.PolyLine(points, color="blue", weight=3.5, opacity=1)
+        elif self.countTras == 1 or self.countTras % 6 == 0:
+            polyLine = folium.PolyLine(points, color="darkred", weight=3.5, opacity=1)
+        elif self.countTras % 5 == 0:
+            polyLine = folium.PolyLine(points, color="purple", weight=3.5, opacity=1)
+        elif self.countTras % 4 == 0:
+            polyLine = folium.PolyLine(points, color="orange", weight=3.5, opacity=1)
+        elif self.countTras % 3 == 0:
+            polyLine = folium.PolyLine(points, color="darkblue", weight=3.5, opacity=1)
+        elif self.countTras % 2 == 0:
+            polyLine = folium.PolyLine(points, color="green", weight=3.5, opacity=1)
+        else:
+            polyLine = folium.PolyLine(points, color="black", weight=3.5, opacity=1)
+
         return polyLine
 
     def readFileMarker(self):
@@ -190,9 +219,37 @@ class Trasa:
                     points.append(tuple([point.latitude, point.longitude]))
         ave_lat = float(sum(p[0] for p in points) / len(points))
         ave_lon = float(sum(p[1] for p in points) / len(points))
-        marker = folium.CircleMarker(location=[ave_lat, ave_lon], color='none', radius=25, fill_color='blue',
-                                     popup=self.popup(),
-                                     tooltip=self.tooltip())
+
+        if self.countTras == 0 or self.countTras % 7 == 0:
+            marker = folium.CircleMarker(location=[ave_lat, ave_lon], color='none', radius=25, fill_color='blue',
+                                         popup=self.popup(),
+                                         tooltip=self.tooltip())
+
+        elif self.countTras == 1 or self.countTras % 6 == 0:
+            marker = folium.CircleMarker(location=[ave_lat, ave_lon], color='none', radius=25, fill_color='darkred',
+                                         popup=self.popup(),
+                                         tooltip=self.tooltip())
+        elif self.countTras % 5 == 0:
+            marker = folium.CircleMarker(location=[ave_lat, ave_lon], color='none', radius=25, fill_color='purple',
+                                         popup=self.popup(),
+                                         tooltip=self.tooltip())
+        elif self.countTras % 4 == 0:
+            marker = folium.CircleMarker(location=[ave_lat, ave_lon], color='none', radius=25, fill_color='orange',
+                                         popup=self.popup(),
+                                         tooltip=self.tooltip())
+        elif self.countTras % 3 == 0:
+            marker = folium.CircleMarker(location=[ave_lat, ave_lon], color='none', radius=25, fill_color='darkblue',
+                                         popup=self.popup(),
+                                         tooltip=self.tooltip())
+        elif self.countTras % 2 == 0:
+            marker = folium.CircleMarker(location=[ave_lat, ave_lon], color='none', radius=25, fill_color='green',
+                                         popup=self.popup(),
+                                         tooltip=self.tooltip())
+        else:
+            marker = folium.CircleMarker(location=[ave_lat, ave_lon], color='none', radius=25, fill_color='black',
+                                         popup=self.popup(),
+                                         tooltip=self.tooltip())
+
         return marker
 
     def tooltip(self):
@@ -209,5 +266,3 @@ class Trasa:
     def addToMapPlugin(self, mapka):
         self.readFilePlugin().add_to(mapka)
         self.readFileMarker().add_to(mapka)
-
-

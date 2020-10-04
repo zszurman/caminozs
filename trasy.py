@@ -39,8 +39,7 @@ def trasyTatry2015(mapka):
 
 
 def trasyTatry2016(mapka):
-    klasa.Trasa('2016-08-23 Bystra, Błyszcz ', 'tatry/2016/08-23 Bystra.gpx', 21.47, '8:59', 1450, 1450, 2248).addToMap(
-        mapka)
+    klasa.Trasa('2016-08-23 Bystra, Błyszcz ', 'tatry/2016/08-23 Bystra.gpx', 21.47, '8:59', 1450, 1450, 2248).addToMap(mapka)
 
 
 def trasyTatry2018(mapka):
