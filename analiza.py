@@ -3,7 +3,7 @@ import gpxpy.gpx
 import methods
 import math
 
-file = 'C:/Users/zs/Downloads/08-27 Blatnia.gpx'
+file = 'C:/Users/zs/Downloads/07-08 Szpiglasowy.gpx'
 
 gpx_file = open(file, 'r')
 gpx = gpxpy.parse(gpx_file)
@@ -47,42 +47,79 @@ def printLatLonTime():
                                                                                 punkt.elevation, punkt.time))
 
 
+def secondReturnTime(sekundy):
+    h = sekundy // (60 * 60)
+    x = sekundy % (60 * 60)
+    m = x // 60
+    s = x % 60
+    strH = str(h)
+    if h < 10:
+        strH = "0" + strH
+    strM = str(m)
+    if m < 10:
+        strM = "0" + strM
+    strS = str(s)
+    if s < 10:
+        strS = "0" + strS
+    return strH + ":" + strM + ":" + strS
+
+
+def secondReturnTempo(second):
+    m = second // 60
+    s = second % 60
+    strM = str(m)
+    if m < 10:
+        strM = "0" + strM
+    strS = str(s)
+    if s < 10:
+        strS = "0" + strS
+    return strM + ":" + strS
+
+
 def wzniosySpadki():
-    i = 300
+    i = 0
     wzniosy = 0.0
     spadki = 0.0
-    while i < len(pointsElevation) - 10:
+    while i < len(pointsElevation) - 120:
         x = pointsElevation[i]
-        y = pointsElevation[i + 1]
+        y = pointsElevation[i + 120]
         z = y - x
         if z > 0:
             wzniosy += z
         if z < 0:
             spadki += z
-        i += 1
-    return "Wzniosy: " + str(wzniosy) + "m \nSpadki: " + str(spadki) + "m \n"
+        i += 120
+    return "Wzniosy:" + str(wzniosy) + "m \nSpadki:" + str(spadki) + "m \n"
 
 
 def maxWys():
     maks = 0
-    dzien = 0
     godz = 0
     minuta = 0
     for trasa in gpx.tracks:
-        for segment1 in trasa.segments:
-            for punkt in segment1.points:
+        for x in trasa.segments:
+            for punkt in x.points:
                 if punkt.elevation > maks:
                     maks = punkt.elevation
                     godz = punkt.time.hour
                     minuta = punkt.time.minute
-    if dzien > 9:
-        return "Maks.wys: " + str(maks) + "mnpm\n" + "o godz: " + str(godz) + ":" + str(minuta)
+    strMaks = str(int(maks))
+    strGodz = str(godz)
+    strMinuta = str(minuta)
+    if minuta < 10:
+        strMinuta = "0" + strMinuta
+    return "Maks.wys:" + strMaks + "mnpm\n(godz." + strGodz + ":" + strMinuta + ")\n"
 
-    else:
-        return "Maks.wys: " + str(maks) + "mnpm\n" + "o godz: " + str(godz) + ":0" + str(minuta)
+
+def startMeta():
+    tP = pointsTime[0]
+    tK = pointsTime[len(pointsTime) - 1]
+    str1 = str(tP)
+    str2 = str(tK)
+    return str1[0:10] + "\nStart:" + str1[11:19] + "\nMeta:" + str2[11:19] + "\n"
 
 
-def czaTrwania():
+def czasAllSec():
     tP = pointsTime[0]
     tK = pointsTime[len(pointsTime) - 1]
     str1 = str(tP)
@@ -91,38 +128,28 @@ def czaTrwania():
     x2 = ((int(str2[14]) * 10 + int(str2[15])) - (int(str1[14]) * 10 + int(str1[15]))) * 60
     x3 = ((int(str2[11]) * 10 + int(str2[12])) - (int(str1[11]) * 10 + int(str1[12]))) * 60 * 60
     x = x1 + x2 + x3
-    godz = x // (60 * 60)
-    minuta = (x % (60 * 60)) // 60
-    sek = (x % (60 * 60)) % 60
-    strMinuta = str(minuta)
-
-    if minuta < 10:
-        strMinuta = "0" + strMinuta
-    if sek < 10:
-        pass
-    return str1[0:10] + "\nStart: " + str1[11:19] + "\nMeta: " + str2[11:19] + "\nCzas: " + str(
-        godz) + ":" + strMinuta + ":" + str(sek) + "\n"
+    return x
 
 
-def czasTrwaniaEf():
+def czasPauseSec():
     i = 0
     t = 0
-
     while i < len(pointsTime) - 1:
         x = str(pointsTime[i])
         x1 = int(x[11:12]) * 60 * 60 + int(x[14:15]) * 60 + int(x[17:18])
         y = str(pointsTime[i + 1])
         y1 = int(y[11:12]) * 60 * 60 + int(y[14:15]) * 60 + int(y[17:18])
         z = y1 - x1
-        t += z
+        if z > 1 and z != 55:
+            t += z
+            print(z)
         i += 1
+    return t
 
-    h = t // (60 * 60)
-    b = t % (60 * 60)
-    m = b // 60
-    s = b % 60
 
-    return "Efektywnie: " + str(h) + ":" + str(m) + ":" + str(s) + "\n"
+def czasPauseString():
+    x = czasPauseSec()
+    return "Postoje:" + secondReturnTime(x) + "\n"
 
 
 def czasReturnSecond():
@@ -134,6 +161,11 @@ def czasReturnSecond():
     x2 = ((int(str2[14]) * 10 + int(str2[15])) - (int(str1[14]) * 10 + int(str1[15]))) * 60
     x3 = ((int(str2[11]) * 10 + int(str2[12])) - (int(str1[11]) * 10 + int(str1[12]))) * 60 * 60
     return x1 + x2 + x3
+
+
+def czasEfReturnString():
+    x = czasReturnSecond() - czasPauseSec()
+    return "Ruch:" + secondReturnTime(x) + "\n"
 
 
 def distance():
@@ -157,7 +189,7 @@ def distance():
         dystans += R * c
         i += 1
         j += 1
-    return "Dystans: " + str(round(dystans, 2)) + "km\n"
+    return "Dystans:" + str(round(dystans, 2)) + "km\n"
 
 
 def distanceReturnKm():
@@ -181,26 +213,47 @@ def distanceReturnKm():
         dystans += R * c
         i += 1
         j += 1
-    return int(dystans)
+    return dystans
 
 
 def kmNaGodz():
     t = czasReturnSecond() / 60 / 60
     x = distanceReturnKm() / t
-    return "Vśr1: " + str(round(x, 2)) + "km/h\n"
+    return "Vśr.:" + str(round(x, 2)) + "km/h\n"
 
 
 def minNaKm():
-    t = int(czasReturnSecond() / distanceReturnKm())
-    x = t // 60
-    x1 = t % 60
-    if x1 >= 60:
-        x += 1
-        x1 -= 60
-    if x1 < 10:
-        return "Vśr2: " + str(x) + ":0" + str(x1) + "min/km\n"
-    else:
-        return "Vśr2: " + str(x) + ":" + str(x1) + "min/km\n"
+    s = int(czasReturnSecond() / distanceReturnKm())
+    return "Tśr.:" + secondReturnTempo(s) + "min/km\n"
+
+
+def maxSpeed():
+    i = 0
+    j = 0
+    recordKm = 0
+    while i < len(pointsX) - 60:
+        R = 6373.0
+        x1 = pointsX[i]
+        x2 = pointsX[i + 60]
+        y1 = pointsY[j]
+        y2 = pointsY[j + 60]
+        lat1 = math.radians(x1)
+        lat2 = math.radians(x2)
+        lon1 = math.radians(y1)
+        lon2 = math.radians(y2)
+        dlat = lat2 - lat1
+        dlon = lon2 - lon1
+        a = math.sin(dlat / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2) ** 2
+        c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+        x = R * c
+        if x > recordKm:
+            recordKm = x
+        i += 1
+        j += 1
+
+    vMax = round(recordKm * 60, 2)
+    tSek = int((60 * 60) / vMax)
+    return "Vmax.:" + str(vMax) + "km/h\n" + "Tmax.:" + secondReturnTempo(tSek) + "min/km\n"
 
 
 printLatLonTime()
@@ -213,7 +266,9 @@ mapka = folium.Map(location=[lat, lon], zoom_start=13, control_scale=True)
 folium.PolyLine(pointsXY, color="blue", weight=3.5, opacity=1).add_to(mapka)
 folium.CircleMarker(location=[lat, lon], color='none', radius=25, fill_color='blue',
                     popup=(
-                                czaTrwania() + czasTrwaniaEf() + distance() + kmNaGodz() + minNaKm() + wzniosySpadki() + maxWys()),
+                            startMeta() + czasEfReturnString() + czasPauseString() + distance() + kmNaGodz()
+                            + minNaKm() + maxSpeed() + wzniosySpadki() + maxWys()
+                    ),
                     tooltip=file).add_to(mapka)
 
 methods.openWebbAndSave(mapka, 'analiza.html')
