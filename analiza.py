@@ -1,9 +1,11 @@
-import folium
-import gpxpy.gpx
-import methods
 import math
 
-file = 'C:/Users/zs/Downloads/07-08 Szpiglasowy.gpx'
+import folium
+import gpxpy.gpx
+
+import methods
+
+file = 'C:/Users/zs/Downloads/Zbigniew_Szurman_2020-09-18_08-10-36.GPX'
 
 gpx_file = open(file, 'r')
 gpx = gpxpy.parse(gpx_file)
@@ -18,6 +20,7 @@ pointsTime = []
 for track in gpx.tracks:
     for segment in track.segments:
         for point in segment.points:
+            print(point)
             pointsTime.append(point.time)
 
 pointsX = []
@@ -44,7 +47,8 @@ def printLatLonTime():
         for segment2 in trasa.segments:
             for punkt in segment2.points:
                 print('Współrzędne ({0},{1}), wysokość: {2}m, czas: {3}'.format(punkt.latitude, punkt.longitude,
-                                                                                punkt.elevation, punkt.time))
+                                                                                punkt.elevation,
+                                                                                punkt.time))
 
 
 def secondReturnTime(sekundy):
@@ -74,6 +78,14 @@ def secondReturnTempo(second):
     if s < 10:
         strS = "0" + strS
     return strM + ":" + strS
+
+
+def secondOfDay(data):
+    x = str(data)
+    dgo = (int(x[11]) * 10) + int(x[12]) * 60 * 60
+    dmi = (int(x[14]) * 10 + int(x[15])) * 60
+    dse = int(x[17]) * 10 + int(x[18])
+    return dgo + dmi + dse
 
 
 def wzniosySpadki():
@@ -135,14 +147,20 @@ def czasPauseSec():
     i = 0
     t = 0
     while i < len(pointsTime) - 1:
-        x = str(pointsTime[i])
-        x1 = int(x[11:12]) * 60 * 60 + int(x[14:15]) * 60 + int(x[17:18])
-        y = str(pointsTime[i + 1])
-        y1 = int(y[11:12]) * 60 * 60 + int(y[14:15]) * 60 + int(y[17:18])
-        z = y1 - x1
-        if z > 1 and z != 55:
+        tx = pointsTime[i]
+        x = secondOfDay(tx)
+        dx = tx.weekday()
+        ty = pointsTime[i + 1]
+        y = secondOfDay(ty)
+        dy = ty.weekday()
+        z = y - x
+        if z > 1 and dx == dy:
             t += z
             print(z)
+        if z > 1 and dx != dy:
+            y += 24 * 60 * 60
+            z = y - x
+            t += z
         i += 1
     return t
 
@@ -152,19 +170,8 @@ def czasPauseString():
     return "Postoje:" + secondReturnTime(x) + "\n"
 
 
-def czasReturnSecond():
-    tP = pointsTime[0]
-    tK = pointsTime[len(pointsTime) - 1]
-    str1 = str(tP)
-    str2 = str(tK)
-    x1 = (int(str2[17]) * 10 + int(str2[18])) - (int(str1[17]) * 10 + int(str1[18]))
-    x2 = ((int(str2[14]) * 10 + int(str2[15])) - (int(str1[14]) * 10 + int(str1[15]))) * 60
-    x3 = ((int(str2[11]) * 10 + int(str2[12])) - (int(str1[11]) * 10 + int(str1[12]))) * 60 * 60
-    return x1 + x2 + x3
-
-
 def czasEfReturnString():
-    x = czasReturnSecond() - czasPauseSec()
+    x = czasAllSec() - czasPauseSec()
     return "Ruch:" + secondReturnTime(x) + "\n"
 
 
@@ -217,13 +224,13 @@ def distanceReturnKm():
 
 
 def kmNaGodz():
-    t = czasReturnSecond() / 60 / 60
+    t = czasAllSec() / 60 / 60
     x = distanceReturnKm() / t
     return "Vśr.:" + str(round(x, 2)) + "km/h\n"
 
 
 def minNaKm():
-    s = int(czasReturnSecond() / distanceReturnKm())
+    s = int(czasAllSec() / distanceReturnKm())
     return "Tśr.:" + secondReturnTempo(s) + "min/km\n"
 
 
