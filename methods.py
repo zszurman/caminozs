@@ -1,5 +1,4 @@
 import webbrowser
-
 import folium
 import gpxpy.gpx
 from IPython.core.display import display
@@ -166,6 +165,11 @@ def openWebbAndSave(mapka, fileHtml):
     mapka.add_child(minimap)
     # plugins.ScrollZoomToggler().add_to(mapka)
     plugins.Fullscreen(position='topright').add_to(mapka)
+    measureControl = plugins.MeasureControl(position='topleft', active_color='red', completed_color='red',
+                                            primary_length_unit='km')
+    mapka.add_child(measureControl)
+    draw = plugins.Draw(position='topleft', export='True')
+    draw.add_to(mapka)
 
     display(mapka)
     mapka.save(fileHtml)
@@ -230,3 +234,4 @@ def markerBell(mapka, lat, lng, popup, tooltip):
 def markerRaport(mapka, lat, lng, popup, tooltip):
     folium.Marker(location=[lat, lng], popup=popup, tooltip=tooltip,
                   icon=folium.Icon(icon='glyphicon-list-alt', color='cadetblue', prefix='glyphicon')).add_to(mapka)
+
