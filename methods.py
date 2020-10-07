@@ -235,3 +235,13 @@ def markerRaport(mapka, lat, lng, popup, tooltip):
     folium.Marker(location=[lat, lng], popup=popup, tooltip=tooltip,
                   icon=folium.Icon(icon='glyphicon-list-alt', color='cadetblue', prefix='glyphicon')).add_to(mapka)
 
+
+def printLatLonTime(file):
+    gpx_file = open(file, 'r')
+    gpx = gpxpy.parse(gpx_file)
+    for trasa in gpx.tracks:
+        for segment2 in trasa.segments:
+            for punkt in segment2.points:
+                print('Współrzędne ({0},{1}), wysokość: {2}m, czas: {3}'.format(punkt.latitude, punkt.longitude,
+                                                                                punkt.elevation,
+                                                                                punkt.time))
