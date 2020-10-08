@@ -5,6 +5,7 @@ import gpxpy.gpx
 from IPython.core.display import display
 from folium import plugins
 from tkinter import *
+from tkinter import filedialog
 
 
 class Application(Frame):
@@ -12,29 +13,27 @@ class Application(Frame):
     def __init__(self, master):
         super(Application, self).__init__(master)
 
-        self.introLbl = Label(self, text="Wprowadź ścieżki do plików")
-        self.introLbl.grid(row=0, column=0, columnspan=2, sticky=W)
-
-        self.gpxLbl = Label(self, text="Plik .gpx:")
-        self.gpxLbl.grid(row=1, column=0, sticky=W)
-
-        self.gpxEnt = Entry(self, width=100)
-        self.gpxEnt.grid(row=1, column=1, sticky=W)
-
+        self.pathLbl = Label(self, width=70, text="nie wybrano pliku gpx")
+        self.pathBtn = Button(self, text="Wybierz plik gpx", command=self.getFile)
         self.htmlLbl = Label(self, text="Plik .html:")
-        self.htmlLbl.grid(row=2, column=0, sticky=W)
-
-        self.htmlEnt = Entry(self, width=100)
-        self.htmlEnt.grid(row=2, column=1, sticky=W)
-
+        self.htmlEnt = Entry(self, width=70)
+        self.htmlEnt.insert(END, "c:/users/zs/downloads/analiza.html")
         self.okBtn = Button(self, text="Kliknij aby wyświetlić mapę", command=self.makeMapAndMarker)
-        self.okBtn.grid(row=6, column=0, sticky=W)
-
-        self.storyTxt = Text(self, width=75, height=20, wrap=WORD)
-        self.storyTxt.grid(row=3, column=0, columnspan=4)
+        self.storyTxt = Text(self, width=70, height=20, wrap=WORD)
+        self.pathBtn.grid(row=0, column=0, sticky=W)
+        self.pathLbl.grid(row=0, column=1, sticky=W)
+        self.htmlLbl.grid(row=1, column=0, sticky=W)
+        self.htmlEnt.grid(row=1, column=1, sticky=W)
+        self.storyTxt.grid(row=2, column=0, columnspan=3)
+        self.okBtn.grid(row=3, column=0, sticky=W)
         self.grid()
         self.fileGPX = 'tatry/2020/07-09 Nosal.gpx'
         self.fileHTML = 'gg.html'
+
+    def getFile(self):
+        fileName = filedialog.askopenfilename(initialdir="c:/users/zs/downloads", title="wybierz plik trasy",
+                                              filetypes=(("pliki gpx", "*.gpx"), ("all files", "*.*")))
+        self.pathLbl["text"] = fileName
 
     def gpxParse(self):
         gpx_file = open(self.fileGPX, 'r')
@@ -140,8 +139,7 @@ class Application(Frame):
         return "Wzniosy:" + str(wzniosy) + "m \nSpadki:" + str(spadki) + "m \n"
 
     def maxHigh(self):
-        gpx_file = open(self.fileGPX, 'r')
-        gpx = gpxpy.parse(gpx_file)
+        gpx = self.gpxParse()
         maks = 0
         godz = 0
         minuta = 0
@@ -268,18 +266,18 @@ class Application(Frame):
         s = int(self.allTimeSec() / self.distanceKm())
         return "Tśr.:" + self.secondTempo(s) + "min/km\n"
 
-    def maxSpeedTempoString(self):
+    def maxSpeedTempoString(self, deltaMinut):
         pointsX = self.pointsX()
         pointsY = self.pointsY()
         i = 0
         j = 0
         recordKm = 0
-        while i < len(pointsX) - 60:
+        while i < len(pointsX) - deltaMinut * 60:
             R = 6373.0
             x1 = pointsX[i]
-            x2 = pointsX[i + 60]
+            x2 = pointsX[i + deltaMinut * 60]
             y1 = pointsY[j]
-            y2 = pointsY[j + 60]
+            y2 = pointsY[j + deltaMinut * 60]
             lat1 = math.radians(x1)
             lat2 = math.radians(x2)
             lon1 = math.radians(y1)
@@ -293,18 +291,49 @@ class Application(Frame):
                 recordKm = x
             i += 1
             j += 1
-        vMax = round(recordKm * 60, 2)
+        vMax = round(recordKm * 60 / deltaMinut, 2)
         tSek = int((60 * 60) / vMax)
-        return "Vmax.:" + str(vMax) + "km/h\n" + "Tmax.:" + self.secondTempo(tSek) + "min/km\n"
+        return "Vmax(" + str(deltaMinut) + "min).:" + str(vMax) + "km/h\n" + "Tmax(" + str(
+            deltaMinut) + "min).:" + self.secondTempo(tSek) + "min/km\n"
+
+    def maxTempoString(self, deltaMinut):
+        pointsX = self.pointsX()
+        pointsY = self.pointsY()
+        i = 0
+        j = 0
+        recordKm = 0
+        while i < len(pointsX) - deltaMinut * 60:
+            R = 6373.0
+            x1 = pointsX[i]
+            x2 = pointsX[i + deltaMinut * 60]
+            y1 = pointsY[j]
+            y2 = pointsY[j + deltaMinut * 60]
+            lat1 = math.radians(x1)
+            lat2 = math.radians(x2)
+            lon1 = math.radians(y1)
+            lon2 = math.radians(y2)
+            dlat = lat2 - lat1
+            dlon = lon2 - lon1
+            a = math.sin(dlat / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2) ** 2
+            c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+            x = R * c
+            if x > recordKm:
+                recordKm = x
+            i += 1
+            j += 1
+        vMax = round(recordKm * 60 / deltaMinut, 2)
+        tSek = int((60 * 60) / vMax)
+        return "Tmax(" + str(deltaMinut) + "min).:" + self.secondTempo(tSek) + "min/km\n"
 
     def __str__(self):
-
-        return self.startMeta() + self.timeEfString() + self.timePauseString() \
-               + self.distanceString() + self.speedString() + self.tempoString() + self.maxSpeedTempoString() \
-               + self.upDown() + self.maxHigh()
+        return "PODSUMOWANIE:\n" + self.startMeta() + self.timeEfString() + self.timePauseString() + \
+               self.distanceString() + self.speedString() + self.tempoString() + self.maxTempoString(
+            1) + self.maxTempoString(3) + \
+               self.maxTempoString(5) + self.maxTempoString(6) + self.maxTempoString(7) + self.maxTempoString(
+            15) + self.upDown() + self.maxHigh()
 
     def makeMapAndMarker(self):
-        self.fileGPX = self.gpxEnt.get()
+        self.fileGPX = self.pathLbl["text"]
         self.fileHTML = self.htmlEnt.get()
         story = self
         self.storyTxt.delete(0.0, END)
@@ -314,18 +343,7 @@ class Application(Frame):
         lon = float(sum(p[1] for p in pointsXY) / len(pointsXY))
         mapka = folium.Map(location=[lat, lon], zoom_start=13, control_scale=True)
         folium.PolyLine(pointsXY, color="blue", weight=3.5, opacity=1).add_to(mapka)
-        folium.CircleMarker(location=[lat, lon], color='none', radius=25, fill_color='blue',
-                            popup=(
-                                    self.startMeta() +
-                                    self.timeEfString() +
-                                    self.timePauseString() +
-                                    self.distanceString() +
-                                    self.speedString() +
-                                    self.tempoString() +
-                                    self.maxSpeedTempoString() +
-                                    self.upDown() +
-                                    self.maxHigh()
-                            ),
+        folium.CircleMarker(location=[lat, lon], color='none', radius=25, fill_color='blue', popup=self,
                             tooltip=self.fileGPX).add_to(mapka)
         folium.raster_layers.TileLayer('Open Street Map').add_to(mapka)
         folium.raster_layers.TileLayer('StamenTerrain').add_to(mapka)
