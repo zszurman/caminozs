@@ -12,19 +12,20 @@ class Application(Frame):
 
     def __init__(self, master):
         super(Application, self).__init__(master)
-
-        self.pathLbl = Label(self, width=70, text="nie wybrano pliku gpx")
-        self.pathBtn = Button(self, text="Wybierz plik gpx", command=self.getFile)
-        self.htmlLbl = Label(self, text="Plik .html:")
-        self.htmlEnt = Entry(self, width=70)
+        self.pathLbl = Label(self, text="Nie wybrano pliku gpx", bg="#3E5FA2", fg="white", font=("Calibri", 18))
+        self.pathBtn = Button(self, text="Wybierz plik .gpx", command=self.getFile, bg="#3E5FA2", fg="#F5AAAA",
+                              font=("Calibri", 18))
+        self.htmlLbl = Label(self, text="Wpisz nazwę pliku .html:", bg="#3E5FA2", fg="#F5AAAA", font=("Calibri", 18))
+        self.htmlEnt = Entry(self, bg="#CCFFE5", fg="#3E5FA2", font=("Calibri", 18))
         self.htmlEnt.insert(END, "c:/users/zs/downloads/analiza.html")
-        self.okBtn = Button(self, text="Kliknij aby wyświetlić mapę", command=self.makeMapAndMarker)
-        self.storyTxt = Text(self, width=70, height=20, wrap=WORD)
-        self.pathBtn.grid(row=0, column=0, sticky=W)
-        self.pathLbl.grid(row=0, column=1, sticky=W)
-        self.htmlLbl.grid(row=1, column=0, sticky=W)
-        self.htmlEnt.grid(row=1, column=1, sticky=W)
-        self.storyTxt.grid(row=2, column=0, columnspan=3)
+        self.okBtn = Button(self, text="Kliknij aby wyświetlić mapę", command=self.klik, bg="#3E5FA2", fg="#F5AAAA",
+                            font=("Calibri", 18))
+        self.storyTxt = Text(self, wrap=WORD, font=("Calibri", 18), bg="#3E5FA2", fg="#00FF00")
+        self.pathBtn.grid(row=0, column=0, sticky=N + E + W + S, padx=2, pady=2)
+        self.pathLbl.grid(row=0, column=1, sticky=N + E + W + S, padx=2, pady=2)
+        self.htmlLbl.grid(row=1, column=0, sticky=N + E + W + S, padx=2, pady=2)
+        self.htmlEnt.grid(row=1, column=1, sticky=N + E + W + S, padx=2, pady=2)
+        self.storyTxt.grid(row=2, column=0, columnspan=2, padx=2, pady=2)
         self.okBtn.grid(row=3, column=0, sticky=W)
         self.grid()
         self.fileGPX = 'tatry/2020/07-09 Nosal.gpx'
@@ -331,6 +332,32 @@ class Application(Frame):
             1) + self.maxTempoString(3) + \
                self.maxTempoString(5) + self.maxTempoString(6) + self.maxTempoString(7) + self.maxTempoString(
             15) + self.upDown() + self.maxHigh()
+
+    def klik(self):
+        try:
+            nameGpx = self.pathLbl["text"].lower()
+            nameHtml = self.htmlEnt.get()
+            x = 0
+
+            if not ".gpx" == (nameGpx[-4:-1] + nameGpx[-1]):
+                self.pathLbl["text"] = "Wybierz plik gpx"
+            else:
+                x += 1
+
+            if not ".html" == (nameHtml[-5:-1] + nameHtml[-1]):
+                self.htmlEnt.delete(0, "end")
+                self.htmlEnt.insert(0, "Wpisz nazwę pliku html")
+            else:
+                x += 1
+
+            if x == 2:
+                self.makeMapAndMarker()
+        except ZeroDivisionError:
+            self.pathLbl["text"] = "Dzielenie przez zero"
+        except TypeError:
+            self.pathLbl["text"] = "Zły typ danych"
+        except range:
+            self.pathLbl["text"] = "Inny błąd"
 
     def makeMapAndMarker(self):
         self.fileGPX = self.pathLbl["text"]
