@@ -9,14 +9,14 @@ lng = 19.05069
 
 mapka = folium.Map(location=[lat, lng], zoom_start=9, control_scale=True)
 
-trasy.trasyBeskidy2016(mapka)
-trasy.trasyBeskidy2017(mapka)
-trasy.trasyBeskidy2018(mapka)
-trasy.trasyBeskidy2019(mapka)
-trasy.trasyBeskidy2020(mapka)
+trasy.trasy_beskidy2016(mapka)
+trasy.trasy_beskidy2017(mapka)
+trasy.trasy_beskidy2018(mapka)
+trasy.trasy_beskidy2019(mapka)
+trasy.trasy_beskidy2020(mapka)
 
-markers.coronaMarker(mapka)
+markers.corona_marker(mapka)
 methods.popup2015do2020(mapka, lat, lng)
 tooltip = 'RAPORT z wszystkich tras w Beskidach'
-methods.markerRaport(mapka, lat, lng, methods.popupRaport(), tooltip)
-methods.openWebbAndSave(mapka, 'C:/Users/zs/Downloads/Beskidy.html')
+methods.marker_raport(mapka, lat, lng, methods.popup_raport(), tooltip)
+methods.open_webb_and_save(mapka, 'C:/Users/zs/Downloads/Beskidy.html')

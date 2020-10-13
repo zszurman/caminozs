@@ -8,10 +8,10 @@ lat = 48.90
 lng = 19.3
 
 mapka = folium.Map(location=[lat, lng], zoom_start=9, control_scale=True)
-trasy.trasySlovakia2016(mapka)
-trasy.trasySlovakia2017(mapka)
-trasy.trasySlovakia2018(mapka)
+trasy.trasy_slovakia2016(mapka)
+trasy.trasy_slovakia2017(mapka)
+trasy.trasy_slovakia2018(mapka)
 methods.popup2015do2020(mapka, lat, lng)
 tooltip = 'RAPORT z wszystkich tras w Tatrach Niżnych, Górach Choczańskich i na Małej Fatrze'
-methods.markerRaport(mapka, lat, lng, methods.popupRaport(), tooltip)
-methods.openWebbAndSave(mapka, 'C:/Users/zs/Downloads/Slovakia.html')
+methods.marker_raport(mapka, lat, lng, methods.popup_raport(), tooltip)
+methods.open_webb_and_save(mapka, 'C:/Users/zs/Downloads/Slovakia.html')

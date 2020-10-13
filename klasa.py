@@ -158,7 +158,7 @@ class Trasa:
                 Trasa.hourTras2020 += int(czas[0] + czas[1])
             Trasa.minTras2020 += int(czas[-2] + czas[-1])
 
-    def readFilePlugin(self):
+    def read_file_plugin(self):
         gpx_file = open(self.file, 'r')
         gpx = gpxpy.parse(gpx_file)
         points = []
@@ -184,7 +184,7 @@ class Trasa:
 
         return p
 
-    def readFilePoly(self):
+    def read_file_poly(self):
         gpx_file = open(self.file, 'r')
         gpx = gpxpy.parse(gpx_file)
         points = []
@@ -209,7 +209,7 @@ class Trasa:
 
         return polyLine
 
-    def readFileMarker(self):
+    def read_file_marker(self):
         gpx_file = open(self.file, 'r')
         gpx = gpxpy.parse(gpx_file)
         points = []
@@ -259,10 +259,10 @@ class Trasa:
         return "Dystans:" + str(self.dystans) + "km\nCzas:" + self.czas + "h\nWzniosy:" + str(self.plus) \
                + "m\nSpadki:" + str(self.minus) + "m\nNajwyżej:" + str(self.maks)
 
-    def addToMap(self, mapka):
-        self.readFileMarker().add_to(mapka)
-        self.readFilePoly().add_to(mapka)
+    def add_to_map(self, mapka):
+        self.read_file_marker().add_to(mapka)
+        self.read_file_poly().add_to(mapka)
 
-    def addToMapPlugin(self, mapka):
-        self.readFilePlugin().add_to(mapka)
-        self.readFileMarker().add_to(mapka)
+    def add_to_map_plugin(self, mapka):
+        self.read_file_plugin().add_to(mapka)
+        self.read_file_marker().add_to(mapka)
